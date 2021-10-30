@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -29385,6 +29385,9 @@ R2 3 2 {val-val*var/100}
 <part name="J2" library="SparkFun-Connectors" deviceset="USB_A" device="_SMT_FEMALE"/>
 <part name="J3" library="SparkFun-Connectors" deviceset="USB_A" device="_SMT_FEMALE"/>
 <part name="J4" library="SparkFun-Connectors" deviceset="USB_A" device="_SMT_FEMALE"/>
+<part name="R2" library="SmartPrj" deviceset="R-EU_" device="R0603" value="3.3k"/>
+<part name="R3" library="SmartPrj" deviceset="R-EU_" device="R0603" value="1.6k"/>
+<part name="GND27" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -29560,7 +29563,6 @@ R2 3 2 {val-val*var/100}
 </instance>
 <instance part="R5" gate="G$1" x="274.32" y="10.16" smashed="yes" rot="R270">
 <attribute name="NAME" x="276.86" y="10.16" size="1.27" layer="95" font="vector" rot="R270" align="center"/>
-<attribute name="VALUE" x="274.32" y="10.16" size="1.016" layer="96" font="vector" ratio="15" rot="R270" align="center"/>
 </instance>
 <instance part="R6" gate="G$1" x="266.7" y="10.16" smashed="yes" rot="R90">
 <attribute name="NAME" x="264.16" y="10.16" size="1.27" layer="95" font="vector" rot="R90" align="center"/>
@@ -29708,6 +29710,17 @@ R2 3 2 {val-val*var/100}
 <instance part="J4" gate="G$1" x="5.08" y="124.46" smashed="yes" rot="MR0">
 <attribute name="NAME" x="10.16" y="132.334" size="1.778" layer="95" font="vector" rot="MR0"/>
 <attribute name="VALUE" x="10.16" y="114.554" size="1.778" layer="96" font="vector" rot="R180" align="top-left"/>
+</instance>
+<instance part="R2" gate="G$1" x="320.04" y="83.82" smashed="yes" rot="R90">
+<attribute name="NAME" x="317.5" y="88.0364" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="318.135" y="83.312" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="R3" gate="G$1" x="330.2" y="91.44" smashed="yes" rot="R180">
+<attribute name="NAME" x="327.66" y="87.2236" size="1.778" layer="95"/>
+<attribute name="VALUE" x="334.645" y="86.868" size="1.778" layer="96"/>
+</instance>
+<instance part="GND27" gate="1" x="320.04" y="73.66" smashed="yes">
+<attribute name="VALUE" x="317.5" y="71.12" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -30022,6 +30035,11 @@ R2 3 2 {val-val*var/100}
 <pinref part="GND11" gate="1" pin="GND"/>
 <wire x1="271.78" y1="76.2" x2="264.16" y2="76.2" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="R2" gate="G$1" pin="1"/>
+<pinref part="GND27" gate="1" pin="GND"/>
+<wire x1="320.04" y1="78.74" x2="320.04" y2="76.2" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="AREF" class="0">
 <segment>
@@ -30225,8 +30243,17 @@ R2 3 2 {val-val*var/100}
 </segment>
 <segment>
 <pinref part="PIHEADER" gate="G$1" pin="RXI/GP15"/>
-<wire x1="302.26" y1="91.44" x2="309.88" y2="91.44" width="0.1524" layer="91"/>
-<label x="304.8" y="91.44" size="1.778" layer="95"/>
+<pinref part="R3" gate="G$1" pin="2"/>
+<wire x1="302.26" y1="91.44" x2="320.04" y2="91.44" width="0.1524" layer="91"/>
+<pinref part="R2" gate="G$1" pin="2"/>
+<wire x1="320.04" y1="91.44" x2="325.12" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="320.04" y1="88.9" x2="320.04" y2="91.44" width="0.1524" layer="91"/>
+<junction x="320.04" y="91.44"/>
+</segment>
+<segment>
+<pinref part="R3" gate="G$1" pin="1"/>
+<wire x1="335.28" y1="91.44" x2="340.36" y2="91.44" width="0.1524" layer="91"/>
+<label x="342.9" y="91.44" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PC0" class="0">
