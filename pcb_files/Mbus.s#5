@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -30676,9 +30676,9 @@ R2 3 2 {val-val*var/100}
 <pinref part="IC3" gate="1" pin="(SDA/INT1)PD1"/>
 </segment>
 <segment>
-<pinref part="TESTPIN" gate="A" pin="2"/>
-<wire x1="66.04" y1="17.78" x2="55.88" y2="17.78" width="0.1524" layer="91"/>
-<label x="58.42" y="17.78" size="1.778" layer="95"/>
+<pinref part="TESTPIN" gate="A" pin="1"/>
+<wire x1="66.04" y1="20.32" x2="55.88" y2="20.32" width="0.1524" layer="91"/>
+<label x="58.42" y="20.32" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SCL" class="0">
@@ -30694,9 +30694,9 @@ R2 3 2 {val-val*var/100}
 <pinref part="IC3" gate="1" pin="(SCL/INT0)PD0"/>
 </segment>
 <segment>
-<pinref part="TESTPIN" gate="A" pin="1"/>
-<wire x1="66.04" y1="20.32" x2="55.88" y2="20.32" width="0.1524" layer="91"/>
-<label x="58.42" y="20.32" size="1.778" layer="95"/>
+<pinref part="TESTPIN" gate="A" pin="2"/>
+<wire x1="66.04" y1="17.78" x2="55.88" y2="17.78" width="0.1524" layer="91"/>
+<label x="58.42" y="17.78" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PB3" class="0">
@@ -30709,6 +30709,11 @@ R2 3 2 {val-val*var/100}
 <wire x1="193.04" y1="104.14" x2="175.26" y2="104.14" width="0.1524" layer="91"/>
 <label x="176.53" y="104.775" size="1.778" layer="95"/>
 <pinref part="IC3" gate="1" pin="(MISO/PCINT3)PB3"/>
+</segment>
+<segment>
+<pinref part="TESTPIN" gate="A" pin="5"/>
+<wire x1="66.04" y1="10.16" x2="55.88" y2="10.16" width="0.1524" layer="91"/>
+<label x="58.42" y="10.16" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PB2" class="0">
@@ -30748,6 +30753,11 @@ R2 3 2 {val-val*var/100}
 <label x="93.98" y="-12.065" size="1.778" layer="95"/>
 <pinref part="IC3" gate="1" pin="PH0(RXD2)"/>
 </segment>
+<segment>
+<pinref part="PIHEADER" gate="G$1" pin="TXO/GP14"/>
+<wire x1="302.26" y1="93.98" x2="309.88" y2="93.98" width="0.1524" layer="91"/>
+<label x="304.8" y="93.98" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="TXD2" class="0">
 <segment>
@@ -30763,6 +30773,11 @@ R2 3 2 {val-val*var/100}
 <wire x1="320.04" y1="91.44" x2="325.12" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="320.04" y1="88.9" x2="320.04" y2="91.44" width="0.1524" layer="91"/>
 <junction x="320.04" y="91.44"/>
+</segment>
+<segment>
+<pinref part="R3" gate="G$1" pin="1"/>
+<wire x1="335.28" y1="91.44" x2="340.36" y2="91.44" width="0.1524" layer="91"/>
+<label x="342.9" y="91.44" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PC0" class="0">
@@ -30983,29 +30998,34 @@ R2 3 2 {val-val*var/100}
 </net>
 <net name="TXD0" class="0">
 <segment>
+<pinref part="TESTPIN" gate="A" pin="3"/>
+<wire x1="66.04" y1="15.24" x2="55.88" y2="15.24" width="0.1524" layer="91"/>
+<label x="58.42" y="15.24" size="1.778" layer="95"/>
+</segment>
+<segment>
 <pinref part="IC3" gate="1" pin="(TXD0)PE1"/>
 <wire x1="175.26" y1="30.48" x2="182.88" y2="30.48" width="0.1524" layer="91"/>
 <label x="177.8" y="30.48" size="1.778" layer="95"/>
 </segment>
-<segment>
-<pinref part="R3" gate="G$1" pin="1"/>
-<wire x1="335.28" y1="91.44" x2="340.36" y2="91.44" width="0.1524" layer="91"/>
-<label x="342.9" y="91.44" size="1.778" layer="95"/>
-</segment>
 </net>
 <net name="RXD0" class="0">
+<segment>
+<pinref part="TESTPIN" gate="A" pin="4"/>
+<wire x1="66.04" y1="12.7" x2="55.88" y2="12.7" width="0.1524" layer="91"/>
+<label x="58.42" y="12.7" size="1.778" layer="95"/>
+</segment>
 <segment>
 <pinref part="IC3" gate="1" pin="(RXD0/PCIN8)PE0"/>
 <wire x1="175.26" y1="27.94" x2="182.88" y2="27.94" width="0.1524" layer="91"/>
 <label x="177.8" y="27.94" size="1.778" layer="95"/>
 </segment>
-<segment>
-<pinref part="PIHEADER" gate="G$1" pin="TXO/GP14"/>
-<wire x1="302.26" y1="93.98" x2="309.88" y2="93.98" width="0.1524" layer="91"/>
-<label x="304.8" y="93.98" size="1.778" layer="95"/>
-</segment>
 </net>
 <net name="PB4" class="0">
+<segment>
+<pinref part="TESTPIN" gate="A" pin="6"/>
+<wire x1="66.04" y1="7.62" x2="55.88" y2="7.62" width="0.1524" layer="91"/>
+<label x="58.42" y="7.62" size="1.778" layer="95"/>
+</segment>
 <segment>
 <pinref part="IC3" gate="1" pin="(OC2A/PCINT4)PB4"/>
 <wire x1="175.26" y1="106.68" x2="182.88" y2="106.68" width="0.1524" layer="91"/>
@@ -31014,12 +31034,22 @@ R2 3 2 {val-val*var/100}
 </net>
 <net name="PB5" class="0">
 <segment>
+<pinref part="TESTPIN" gate="A" pin="7"/>
+<wire x1="66.04" y1="5.08" x2="55.88" y2="5.08" width="0.1524" layer="91"/>
+<label x="58.42" y="5.08" size="1.778" layer="95"/>
+</segment>
+<segment>
 <pinref part="IC3" gate="1" pin="(OC1A/PCINT5)PB5"/>
 <wire x1="175.26" y1="109.22" x2="182.88" y2="109.22" width="0.1524" layer="91"/>
 <label x="177.8" y="109.22" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PB6" class="0">
+<segment>
+<pinref part="TESTPIN" gate="A" pin="8"/>
+<wire x1="66.04" y1="2.54" x2="55.88" y2="2.54" width="0.1524" layer="91"/>
+<label x="58.42" y="2.54" size="1.778" layer="95"/>
+</segment>
 <segment>
 <pinref part="IC3" gate="1" pin="(OC1B/PCINT6)PB6"/>
 <wire x1="175.26" y1="111.76" x2="182.88" y2="111.76" width="0.1524" layer="91"/>
@@ -31033,9 +31063,9 @@ R2 3 2 {val-val*var/100}
 <label x="180.34" y="58.42" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="TESTPIN" gate="A" pin="3"/>
-<wire x1="66.04" y1="15.24" x2="55.88" y2="15.24" width="0.1524" layer="91"/>
-<label x="58.42" y="15.24" size="1.778" layer="95"/>
+<wire x1="213.36" y1="0" x2="200.66" y2="0" width="0.1524" layer="91"/>
+<label x="203.2" y="0" size="1.778" layer="95"/>
+<pinref part="J1" gate="G$1" pin="6"/>
 </segment>
 </net>
 <net name="RXD1" class="0">
@@ -31045,9 +31075,9 @@ R2 3 2 {val-val*var/100}
 <label x="180.34" y="55.88" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="TESTPIN" gate="A" pin="4"/>
-<wire x1="66.04" y1="12.7" x2="55.88" y2="12.7" width="0.1524" layer="91"/>
-<label x="58.42" y="12.7" size="1.778" layer="95"/>
+<wire x1="213.36" y1="-2.54" x2="200.66" y2="-2.54" width="0.1524" layer="91"/>
+<label x="203.2" y="-2.54" size="1.778" layer="95"/>
+<pinref part="J1" gate="G$1" pin="7"/>
 </segment>
 </net>
 <net name="PD4" class="0">
@@ -31057,9 +31087,9 @@ R2 3 2 {val-val*var/100}
 <label x="180.34" y="60.96" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="TESTPIN" gate="A" pin="5"/>
-<wire x1="66.04" y1="10.16" x2="55.88" y2="10.16" width="0.1524" layer="91"/>
-<label x="58.42" y="10.16" size="1.778" layer="95"/>
+<wire x1="213.36" y1="2.54" x2="200.66" y2="2.54" width="0.1524" layer="91"/>
+<label x="203.2" y="2.54" size="1.778" layer="95"/>
+<pinref part="J1" gate="G$1" pin="5"/>
 </segment>
 </net>
 <net name="PL3" class="0">
@@ -31074,90 +31104,21 @@ R2 3 2 {val-val*var/100}
 <label x="233.68" y="33.02" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="TXD3" class="0">
-<segment>
-<wire x1="213.36" y1="0" x2="200.66" y2="0" width="0.1524" layer="91"/>
-<label x="203.2" y="0" size="1.778" layer="95"/>
-<pinref part="J1" gate="G$1" pin="6"/>
-</segment>
-<segment>
-<pinref part="IC3" gate="1" pin="PJ1(TXD3/PCINT10)"/>
-<wire x1="104.14" y1="12.7" x2="91.44" y2="12.7" width="0.1524" layer="91"/>
-<label x="96.52" y="12.7" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="RXD3" class="0">
-<segment>
-<wire x1="213.36" y1="-2.54" x2="200.66" y2="-2.54" width="0.1524" layer="91"/>
-<label x="203.2" y="-2.54" size="1.778" layer="95"/>
-<pinref part="J1" gate="G$1" pin="7"/>
-</segment>
-<segment>
-<pinref part="IC3" gate="1" pin="PJ0(RXD3/PCINT9)"/>
-<wire x1="104.14" y1="10.16" x2="91.44" y2="10.16" width="0.1524" layer="91"/>
-<label x="96.52" y="10.16" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="PJ2" class="0">
-<segment>
-<wire x1="213.36" y1="2.54" x2="200.66" y2="2.54" width="0.1524" layer="91"/>
-<label x="203.2" y="2.54" size="1.778" layer="95"/>
-<pinref part="J1" gate="G$1" pin="5"/>
-</segment>
-<segment>
-<pinref part="IC3" gate="1" pin="PJ2(XCK3/PCINT11)"/>
-<wire x1="104.14" y1="15.24" x2="91.44" y2="15.24" width="0.1524" layer="91"/>
-<label x="96.52" y="15.24" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="PD5" class="0">
-<segment>
-<pinref part="TESTPIN" gate="A" pin="6"/>
-<wire x1="66.04" y1="7.62" x2="55.88" y2="7.62" width="0.1524" layer="91"/>
-<label x="58.42" y="7.62" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="IC3" gate="1" pin="(XCK1)PD5"/>
-<wire x1="175.26" y1="63.5" x2="185.42" y2="63.5" width="0.1524" layer="91"/>
-<label x="180.34" y="63.5" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="PD6" class="0">
-<segment>
-<pinref part="TESTPIN" gate="A" pin="7"/>
-<wire x1="66.04" y1="5.08" x2="55.88" y2="5.08" width="0.1524" layer="91"/>
-<label x="58.42" y="5.08" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="IC3" gate="1" pin="(T1)PD6"/>
-<wire x1="175.26" y1="66.04" x2="185.42" y2="66.04" width="0.1524" layer="91"/>
-<label x="180.34" y="66.04" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="PD7" class="0">
-<segment>
-<pinref part="TESTPIN" gate="A" pin="8"/>
-<wire x1="66.04" y1="2.54" x2="55.88" y2="2.54" width="0.1524" layer="91"/>
-<label x="58.42" y="2.54" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="IC3" gate="1" pin="(T0)PD7"/>
-<wire x1="175.26" y1="68.58" x2="185.42" y2="68.58" width="0.1524" layer="91"/>
-<label x="180.34" y="68.58" size="1.778" layer="95"/>
-</segment>
-</net>
 </nets>
 </sheet>
 </sheets>
 <errors>
+<approved hash="104,1,12.7,154.94,X1,1,GND,,,"/>
+<approved hash="104,1,22.86,154.94,X1,2,PWRIN,,,"/>
+<approved hash="104,1,33.02,165.1,X1,3,GND,,,"/>
 <approved hash="104,1,104.14,116.84,IC3,AGND,GND,,,"/>
 <approved hash="104,1,104.14,119.38,IC3,AVCC,+5V,,,"/>
-<approved hash="204,1,104.14,96.52,IC3,GND1,,,,"/>
-<approved hash="204,1,104.14,93.98,IC3,GND2,,,,"/>
+<approved hash="104,1,104.14,96.52,IC3,GND1,GND,,,"/>
+<approved hash="104,1,104.14,93.98,IC3,GND2,GND,,,"/>
 <approved hash="104,1,104.14,91.44,IC3,GND3,GND,,,"/>
-<approved hash="204,1,104.14,109.22,IC3,VCC,,,,"/>
-<approved hash="204,1,104.14,106.68,IC3,VCC1,,,,"/>
-<approved hash="204,1,104.14,104.14,IC3,VCC2,,,,"/>
+<approved hash="104,1,104.14,109.22,IC3,VCC,+5V,,,"/>
+<approved hash="104,1,104.14,106.68,IC3,VCC1,+5V,,,"/>
+<approved hash="104,1,104.14,104.14,IC3,VCC2,+5V,,,"/>
 <approved hash="104,1,104.14,101.6,IC3,VCC3,+5V,,,"/>
 <approved hash="204,1,33.02,-20.32,RESET,5-GND,,,,"/>
 <approved hash="204,1,271.78,127,PIHEADER,3.3V,,,,"/>
@@ -31166,8 +31127,13 @@ R2 3 2 {val-val*var/100}
 <approved hash="104,1,317.5,5.08,IC4,VBAT,VBAT1,,,"/>
 <approved hash="104,1,317.5,2.54,IC4,VSS,GND,,,"/>
 <approved hash="104,1,287.02,10.16,IC4,VDD,N$10,,,"/>
+<approved hash="104,1,17.78,53.34,LCD1,A,N$11,,,"/>
+<approved hash="104,1,17.78,50.8,LCD1,K,GND,,,"/>
+<approved hash="104,1,17.78,86.36,LCD1,VDD,+5V,,,"/>
+<approved hash="104,1,17.78,88.9,LCD1,VSS,GND,,,"/>
 <approved hash="113,1,272.71,25.4,SJ3,,,,,"/>
 <approved hash="113,1,265.09,25.4,SJ4,,,,,"/>
+<approved hash="113,1,-10.16,83.6041,R8,,,,,"/>
 </errors>
 </schematic>
 </drawing>
