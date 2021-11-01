@@ -29893,7 +29893,6 @@ R2 3 2 {val-val*var/100}
 <part name="P+11" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="P+12" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="J1" library="con-headers-jp" deviceset="F-1X18-" device="SIP-100-32Y"/>
-<part name="P+15" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="P+18" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="P+19" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
@@ -29911,7 +29910,6 @@ R2 3 2 {val-val*var/100}
 <part name="GND21" library="supply1" deviceset="GND" device=""/>
 <part name="GND22" library="supply1" deviceset="GND" device=""/>
 <part name="GND19" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="GND24" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND26" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="J2" library="SparkFun-Connectors" deviceset="USB_A" device="_SMT_FEMALE"/>
 <part name="R2" library="SmartPrj" deviceset="R-EU_" device="R0603" value="3.3k"/>
@@ -30175,9 +30173,6 @@ R2 3 2 {val-val*var/100}
 <attribute name="VALUE" x="217.17" y="-35.56" size="1.778" layer="96"/>
 <attribute name="NAME" x="217.17" y="16.002" size="1.778" layer="95"/>
 </instance>
-<instance part="P+15" gate="1" x="91.44" y="99.06" smashed="yes" rot="R90">
-<attribute name="VALUE" x="96.52" y="96.52" size="1.778" layer="96" rot="R180"/>
-</instance>
 <instance part="P+18" gate="1" x="30.48" y="20.32" smashed="yes">
 <attribute name="VALUE" x="27.94" y="15.24" size="1.778" layer="96" rot="R90"/>
 </instance>
@@ -30224,9 +30219,6 @@ R2 3 2 {val-val*var/100}
 </instance>
 <instance part="GND19" gate="1" x="30.48" y="162.56" smashed="yes">
 <attribute name="VALUE" x="27.94" y="160.02" size="1.778" layer="96"/>
-</instance>
-<instance part="GND24" gate="1" x="96.52" y="88.9" smashed="yes">
-<attribute name="VALUE" x="93.98" y="86.36" size="1.778" layer="96"/>
 </instance>
 <instance part="GND26" gate="1" x="238.76" y="25.4" smashed="yes">
 <attribute name="VALUE" x="236.22" y="22.86" size="1.778" layer="96"/>
@@ -30377,12 +30369,6 @@ R2 3 2 {val-val*var/100}
 <junction x="271.78" y="30.48"/>
 </segment>
 <segment>
-<pinref part="IC3" gate="1" pin="VCC3"/>
-<wire x1="104.14" y1="101.6" x2="93.98" y2="101.6" width="0.1524" layer="91"/>
-<pinref part="P+15" gate="1" pin="+5V"/>
-<wire x1="93.98" y1="99.06" x2="93.98" y2="101.6" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="POWER" gate="A" pin="2"/>
 <wire x1="38.1" y1="17.78" x2="30.48" y2="17.78" width="0.1524" layer="91"/>
 <pinref part="P+18" gate="1" pin="+5V"/>
@@ -30503,11 +30489,6 @@ R2 3 2 {val-val*var/100}
 <wire x1="213.36" y1="-12.7" x2="200.66" y2="-12.7" width="0.1524" layer="91"/>
 <pinref part="J1" gate="G$1" pin="11"/>
 <pinref part="GND2" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="IC3" gate="1" pin="GND3"/>
-<wire x1="104.14" y1="91.44" x2="96.52" y2="91.44" width="0.1524" layer="91"/>
-<pinref part="GND24" gate="1" pin="GND"/>
 </segment>
 <segment>
 <wire x1="86.36" y1="91.44" x2="86.36" y2="101.6" width="0.1524" layer="91"/>

@@ -31039,34 +31039,12 @@ R2 3 2 {val-val*var/100}
 <label x="203.2" y="0" size="1.778" layer="95"/>
 <pinref part="J1" gate="G$1" pin="6"/>
 </segment>
-<segment>
-<pinref part="IC3" gate="1" pin="PJ1(TXD3/PCINT10)"/>
-<wire x1="104.14" y1="12.7" x2="91.44" y2="12.7" width="0.1524" layer="91"/>
-<label x="96.52" y="12.7" size="1.778" layer="95"/>
-</segment>
 </net>
 <net name="RXD3" class="0">
 <segment>
 <wire x1="213.36" y1="-2.54" x2="200.66" y2="-2.54" width="0.1524" layer="91"/>
 <label x="203.2" y="-2.54" size="1.778" layer="95"/>
 <pinref part="J1" gate="G$1" pin="7"/>
-</segment>
-<segment>
-<pinref part="IC3" gate="1" pin="PJ0(RXD3/PCINT9)"/>
-<wire x1="104.14" y1="10.16" x2="91.44" y2="10.16" width="0.1524" layer="91"/>
-<label x="96.52" y="10.16" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="PJ2" class="0">
-<segment>
-<wire x1="213.36" y1="2.54" x2="200.66" y2="2.54" width="0.1524" layer="91"/>
-<label x="203.2" y="2.54" size="1.778" layer="95"/>
-<pinref part="J1" gate="G$1" pin="5"/>
-</segment>
-<segment>
-<pinref part="IC3" gate="1" pin="PJ2(XCK3/PCINT11)"/>
-<wire x1="104.14" y1="15.24" x2="91.44" y2="15.24" width="0.1524" layer="91"/>
-<label x="96.52" y="15.24" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PD5" class="0">
@@ -31104,6 +31082,11 @@ R2 3 2 {val-val*var/100}
 <wire x1="175.26" y1="68.58" x2="185.42" y2="68.58" width="0.1524" layer="91"/>
 <label x="180.34" y="68.58" size="1.778" layer="95"/>
 </segment>
+<segment>
+<wire x1="213.36" y1="2.54" x2="200.66" y2="2.54" width="0.1524" layer="91"/>
+<label x="203.2" y="2.54" size="1.778" layer="95"/>
+<pinref part="J1" gate="G$1" pin="5"/>
+</segment>
 </net>
 </nets>
 </sheet>
@@ -31113,11 +31096,11 @@ R2 3 2 {val-val*var/100}
 <approved hash="104,1,104.14,119.38,IC3,AVCC,+5V,,,"/>
 <approved hash="204,1,104.14,96.52,IC3,GND1,,,,"/>
 <approved hash="204,1,104.14,93.98,IC3,GND2,,,,"/>
-<approved hash="104,1,104.14,91.44,IC3,GND3,GND,,,"/>
+<approved hash="204,1,104.14,91.44,IC3,GND3,,,,"/>
 <approved hash="204,1,104.14,109.22,IC3,VCC,,,,"/>
 <approved hash="204,1,104.14,106.68,IC3,VCC1,,,,"/>
 <approved hash="204,1,104.14,104.14,IC3,VCC2,,,,"/>
-<approved hash="104,1,104.14,101.6,IC3,VCC3,+5V,,,"/>
+<approved hash="204,1,104.14,101.6,IC3,VCC3,,,,"/>
 <approved hash="204,1,33.02,-20.32,RESET,5-GND,,,,"/>
 <approved hash="204,1,271.78,127,PIHEADER,3.3V,,,,"/>
 <approved hash="202,1,302.26,111.76,PIHEADER,CIPO/GP9,,,,"/>
