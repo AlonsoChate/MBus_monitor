@@ -29049,7 +29049,10 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <part name="P+21" library="supply1@1" deviceset="+5V" device=""/>
 <part name="P+20" library="supply1@1" deviceset="+5V" device=""/>
 <part name="R8" library="rcl@1" deviceset="POTENTIOMETER_" device="PT-10"/>
+<part name="P+6" library="supply1@1" deviceset="+5V" device=""/>
 <part name="TESTPIN" library="SmartPrj" deviceset="PINHD-1X8" device="" value="8x1F-H8.5"/>
+<part name="P+2" library="supply1@1" deviceset="+5V" device=""/>
+<part name="P+12" library="supply1@1" deviceset="+5V" device=""/>
 <part name="J1" library="con-headers-jp" deviceset="F-1X18-" device="SIP-100-32Y"/>
 <part name="P+18" library="supply1@1" deviceset="+5V" device=""/>
 <part name="P+19" library="supply1@1" deviceset="+5V" device=""/>
@@ -29090,11 +29093,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <part name="R3" library="SmartPrj" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="R14" library="SmartPrj" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="R15" library="SmartPrj" deviceset="R-EU_" device="R0603" value="10k"/>
-<part name="+3V5" library="supply1" deviceset="+3V3" device=""/>
-<part name="+3V6" library="supply1" deviceset="+3V3" device=""/>
-<part name="+3V7" library="supply1" deviceset="+3V3" device=""/>
-<part name="+3V8" library="supply1" deviceset="+3V3" device=""/>
-<part name="R16" library="SmartPrj" deviceset="R-EU_" device="R0603" value="10k"/>
 </parts>
 <sheets>
 <sheet>
@@ -29294,9 +29292,18 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <attribute name="NAME" x="210.82" y="91.44" size="1.778" layer="95"/>
 <attribute name="VALUE" x="210.82" y="88.9" size="1.778" layer="96"/>
 </instance>
+<instance part="P+6" gate="1" x="264.16" y="134.62" smashed="yes">
+<attribute name="VALUE" x="261.62" y="129.54" size="1.778" layer="96" rot="R90"/>
+</instance>
 <instance part="TESTPIN" gate="A" x="68.58" y="10.16" smashed="yes">
 <attribute name="NAME" x="72.39" y="10.795" size="1.778" layer="95"/>
 <attribute name="VALUE" x="62.23" y="-2.54" size="1.778" layer="96"/>
+</instance>
+<instance part="P+2" gate="1" x="297.18" y="50.8" smashed="yes">
+<attribute name="VALUE" x="294.64" y="45.72" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="P+12" gate="1" x="271.78" y="33.02" smashed="yes">
+<attribute name="VALUE" x="269.24" y="27.94" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="J1" gate="G$1" x="218.44" y="-7.62" smashed="yes">
 <attribute name="VALUE" x="217.17" y="-35.56" size="1.778" layer="96"/>
@@ -29429,22 +29436,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <attribute name="NAME" x="328.5236" y="76.2" size="1.778" layer="95" rot="R270"/>
 <attribute name="VALUE" x="328.168" y="69.215" size="1.778" layer="96" rot="R270"/>
 </instance>
-<instance part="+3V5" gate="G$1" x="254" y="127" smashed="yes">
-<attribute name="VALUE" x="251.46" y="121.92" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="+3V6" gate="G$1" x="297.18" y="50.8" smashed="yes">
-<attribute name="VALUE" x="294.64" y="45.72" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="+3V7" gate="G$1" x="271.78" y="40.64" smashed="yes">
-<attribute name="VALUE" x="269.24" y="35.56" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="+3V8" gate="G$1" x="317.5" y="142.24" smashed="yes">
-<attribute name="VALUE" x="314.96" y="137.16" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="R16" gate="G$1" x="317.5" y="132.08" smashed="yes" rot="R90">
-<attribute name="NAME" x="313.2836" y="134.62" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="312.928" y="127.635" size="1.778" layer="96" rot="R270"/>
-</instance>
 </instances>
 <busses>
 </busses>
@@ -29541,6 +29532,25 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <pinref part="R8" gate="1" pin="2"/>
 <wire x1="223.52" y1="96.52" x2="213.36" y2="96.52" width="0.1524" layer="91"/>
 <junction x="223.52" y="96.52"/>
+</segment>
+<segment>
+<pinref part="P+6" gate="1" pin="+5V"/>
+<wire x1="264.16" y1="132.08" x2="264.16" y2="129.54" width="0.1524" layer="91"/>
+<pinref part="PIHEADER" gate="G$1" pin="5V"/>
+<wire x1="264.16" y1="129.54" x2="271.78" y2="129.54" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R7" gate="G$1" pin="1"/>
+<wire x1="297.18" y1="48.26" x2="297.18" y2="43.18" width="0.1524" layer="91"/>
+<pinref part="P+2" gate="1" pin="+5V"/>
+</segment>
+<segment>
+<pinref part="SJ3" gate="G$1" pin="2"/>
+<pinref part="SJ4" gate="G$1" pin="2"/>
+<wire x1="274.32" y1="30.48" x2="271.78" y2="30.48" width="0.1524" layer="91"/>
+<pinref part="P+12" gate="1" pin="+5V"/>
+<wire x1="271.78" y1="30.48" x2="266.7" y2="30.48" width="0.1524" layer="91"/>
+<junction x="271.78" y="30.48"/>
 </segment>
 <segment>
 <pinref part="POWER" gate="A" pin="2"/>
@@ -29832,13 +29842,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <wire x1="66.04" y1="17.78" x2="55.88" y2="17.78" width="0.1524" layer="91"/>
 <label x="58.42" y="17.78" size="1.778" layer="95"/>
 </segment>
-<segment>
-<wire x1="287.02" y1="2.54" x2="266.7" y2="2.54" width="0.1524" layer="91"/>
-<wire x1="266.7" y1="2.54" x2="266.7" y2="5.08" width="0.1524" layer="91"/>
-<label x="274.32" y="2.54" size="1.778" layer="95"/>
-<pinref part="R6" gate="G$1" pin="1"/>
-<pinref part="IC4" gate="G$1" pin="SDA"/>
-</segment>
 </net>
 <net name="SCL" class="0">
 <segment>
@@ -29856,12 +29859,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <pinref part="TESTPIN" gate="A" pin="1"/>
 <wire x1="66.04" y1="20.32" x2="55.88" y2="20.32" width="0.1524" layer="91"/>
 <label x="58.42" y="20.32" size="1.778" layer="95"/>
-</segment>
-<segment>
-<wire x1="287.02" y1="5.08" x2="274.32" y2="5.08" width="0.1524" layer="91"/>
-<label x="279.4" y="5.08" size="1.778" layer="95"/>
-<pinref part="R5" gate="G$1" pin="2"/>
-<pinref part="IC4" gate="G$1" pin="SCL"/>
 </segment>
 </net>
 <net name="PB3" class="0">
@@ -30094,6 +30091,33 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <junction x="297.18" y="30.48"/>
 </segment>
 </net>
+<net name="PISDA" class="0">
+<segment>
+<pinref part="PIHEADER" gate="G$1" pin="SDA/GP2"/>
+<wire x1="302.26" y1="124.46" x2="309.88" y2="124.46" width="0.1524" layer="91"/>
+<label x="307.34" y="124.46" size="1.778" layer="95"/>
+</segment>
+<segment>
+<wire x1="287.02" y1="2.54" x2="266.7" y2="2.54" width="0.1524" layer="91"/>
+<wire x1="266.7" y1="2.54" x2="266.7" y2="5.08" width="0.1524" layer="91"/>
+<label x="274.32" y="2.54" size="1.778" layer="95"/>
+<pinref part="R6" gate="G$1" pin="1"/>
+<pinref part="IC4" gate="G$1" pin="SDA"/>
+</segment>
+</net>
+<net name="PISCL" class="0">
+<segment>
+<pinref part="PIHEADER" gate="G$1" pin="SCL/GP3\"/>
+<wire x1="302.26" y1="121.92" x2="309.88" y2="121.92" width="0.1524" layer="91"/>
+<label x="307.34" y="121.92" size="1.778" layer="95"/>
+</segment>
+<segment>
+<wire x1="287.02" y1="5.08" x2="274.32" y2="5.08" width="0.1524" layer="91"/>
+<label x="279.4" y="5.08" size="1.778" layer="95"/>
+<pinref part="R5" gate="G$1" pin="2"/>
+<pinref part="IC4" gate="G$1" pin="SCL"/>
+</segment>
+</net>
 <net name="N$11" class="0">
 <segment>
 <pinref part="LCD1" gate="LCD1" pin="A"/>
@@ -30239,22 +30263,12 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <label x="203.2" y="0" size="1.778" layer="95"/>
 <pinref part="J1" gate="G$1" pin="6"/>
 </segment>
-<segment>
-<pinref part="IC3" gate="1" pin="PJ1(TXD3/PCINT10)"/>
-<wire x1="104.14" y1="12.7" x2="91.44" y2="12.7" width="0.1524" layer="91"/>
-<label x="88.9" y="15.24" size="1.778" layer="95"/>
-</segment>
 </net>
 <net name="RXD3" class="0">
 <segment>
 <wire x1="213.36" y1="-2.54" x2="200.66" y2="-2.54" width="0.1524" layer="91"/>
 <label x="203.2" y="-2.54" size="1.778" layer="95"/>
 <pinref part="J1" gate="G$1" pin="7"/>
-</segment>
-<segment>
-<pinref part="IC3" gate="1" pin="PJ0(RXD3/PCINT9)"/>
-<wire x1="104.14" y1="10.16" x2="91.44" y2="10.16" width="0.1524" layer="91"/>
-<label x="88.9" y="7.62" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PD5" class="0">
@@ -30297,15 +30311,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <label x="203.2" y="2.54" size="1.778" layer="95"/>
 <pinref part="J1" gate="G$1" pin="5"/>
 </segment>
-<segment>
-<pinref part="PIHEADER" gate="G$1" pin="SCL/GP3\"/>
-<pinref part="R16" gate="G$1" pin="1"/>
-<wire x1="302.26" y1="121.92" x2="317.5" y2="121.92" width="0.1524" layer="91"/>
-<wire x1="317.5" y1="121.92" x2="317.5" y2="127" width="0.1524" layer="91"/>
-<wire x1="317.5" y1="121.92" x2="325.12" y2="121.92" width="0.1524" layer="91"/>
-<junction x="317.5" y="121.92"/>
-<label x="325.12" y="121.92" size="1.778" layer="95"/>
-</segment>
 </net>
 <net name="+3V3" class="0">
 <segment>
@@ -30327,31 +30332,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <pinref part="+3V3" gate="G$1" pin="+3V3"/>
 <pinref part="R15" gate="G$1" pin="2"/>
 <wire x1="332.74" y1="81.28" x2="332.74" y2="78.74" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="+3V5" gate="G$1" pin="+3V3"/>
-<pinref part="PIHEADER" gate="G$1" pin="3.3V"/>
-<wire x1="254" y1="124.46" x2="271.78" y2="124.46" width="0.1524" layer="91"/>
-<wire x1="271.78" y1="124.46" x2="271.78" y2="127" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="R7" gate="G$1" pin="1"/>
-<wire x1="297.18" y1="48.26" x2="297.18" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="+3V6" gate="G$1" pin="+3V3"/>
-</segment>
-<segment>
-<pinref part="SJ3" gate="G$1" pin="2"/>
-<pinref part="SJ4" gate="G$1" pin="2"/>
-<wire x1="274.32" y1="30.48" x2="271.78" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="+3V7" gate="G$1" pin="+3V3"/>
-<wire x1="271.78" y1="30.48" x2="266.7" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="271.78" y1="38.1" x2="271.78" y2="30.48" width="0.1524" layer="91"/>
-<junction x="271.78" y="30.48"/>
-</segment>
-<segment>
-<pinref part="R16" gate="G$1" pin="2"/>
-<pinref part="+3V8" gate="G$1" pin="+3V3"/>
-<wire x1="317.5" y1="137.16" x2="317.5" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
