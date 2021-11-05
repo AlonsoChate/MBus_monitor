@@ -3,8 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
-<setting keepoldvectorfont="yes"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -190,12 +189,6 @@
 <text x="-2.54" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="GND" x="0" y="2.54" visible="off" length="short" direction="sup" rot="R270"/>
 </symbol>
-<symbol name="+3V3">
-<wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
-<wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
-<text x="-2.54" y="-5.08" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
-<pin name="+3V3" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
-</symbol>
 </symbols>
 <devicesets>
 <deviceset name="+5V" prefix="P+">
@@ -215,19 +208,6 @@
 <description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
 <gates>
 <gate name="1" symbol="GND" x="0" y="0"/>
-</gates>
-<devices>
-<device name="">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="+3V3" prefix="+3V3">
-<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
-<gates>
-<gate name="G$1" symbol="+3V3" x="0" y="0"/>
 </gates>
 <devices>
 <device name="">
@@ -24865,7 +24845,7 @@ Manufacturer: Hirose&lt;br&gt;
 </deviceset>
 </devicesets>
 </library>
-<library name="supply1@1">
+<library name="supply1" urn="urn:adsk.eagle:library:371">
 <description>&lt;b&gt;Supply Symbols&lt;/b&gt;&lt;p&gt;
  GND, VCC, 0V, +5V, -5V, etc.&lt;p&gt;
  Please keep in mind, that these devices are necessary for the
@@ -24876,20 +24856,20 @@ Manufacturer: Hirose&lt;br&gt;
 <packages>
 </packages>
 <symbols>
-<symbol name="+5V">
+<symbol name="+5V" urn="urn:adsk.eagle:symbol:26929/1" library_version="1">
 <wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
 <wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
 <text x="-2.54" y="-5.08" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
 <pin name="+5V" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
 </symbol>
-<symbol name="GND">
+<symbol name="GND" urn="urn:adsk.eagle:symbol:26925/1" library_version="1">
 <wire x1="-1.905" y1="0" x2="1.905" y2="0" width="0.254" layer="94"/>
 <text x="-2.54" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="GND" x="0" y="2.54" visible="off" length="short" direction="sup" rot="R270"/>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="+5V" prefix="P+">
+<deviceset name="+5V" urn="urn:adsk.eagle:component:26963/1" prefix="P+" library_version="1">
 <description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
 <gates>
 <gate name="1" symbol="+5V" x="0" y="0"/>
@@ -24902,7 +24882,7 @@ Manufacturer: Hirose&lt;br&gt;
 </device>
 </devices>
 </deviceset>
-<deviceset name="GND" prefix="GND">
+<deviceset name="GND" urn="urn:adsk.eagle:component:26954/1" prefix="GND" library_version="1">
 <description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
 <gates>
 <gate name="1" symbol="GND" x="0" y="0"/>
@@ -27669,7 +27649,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </deviceset>
 </devicesets>
 </library>
-<library name="rcl@1">
+<library name="rcl" urn="urn:adsk.eagle:library:334">
 <description>&lt;b&gt;Resistors, Capacitors, Inductors&lt;/b&gt;&lt;p&gt;
 Based on the previous libraries:
 &lt;ul&gt;
@@ -28718,7 +28698,7 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 &lt;/tr&gt;
 &lt;/table&gt;</description>
 <packages>
-<package name="PT-10">
+<package name="PT-10" urn="urn:adsk.eagle:footprint:23297/1" library_version="11">
 <description>&lt;b&gt;Trimm Potentiometer&lt;/b&gt;</description>
 <wire x1="-3.175" y1="-4.064" x2="3.175" y2="-4.064" width="0.127" layer="21" curve="-288.924644"/>
 <wire x1="3.175" y1="-4.064" x2="3.175" y2="-5.715" width="0.127" layer="51"/>
@@ -28752,7 +28732,7 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <text x="-3.175" y="6.35" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="-3.048" y="-7.62" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
 </package>
-<package name="PT-10S">
+<package name="PT-10S" urn="urn:adsk.eagle:footprint:23298/1" library_version="11">
 <description>&lt;b&gt;Trimm Potentiometer&lt;/b&gt;</description>
 <wire x1="-1.905" y1="-1.27" x2="-1.27" y2="-1.905" width="0.127" layer="51"/>
 <wire x1="-1.27" y1="-1.905" x2="1.27" y2="-1.905" width="0.127" layer="21"/>
@@ -28775,7 +28755,7 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <text x="-2.54" y="3.7846" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="-2.54" y="-4.2164" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
 </package>
-<package name="PT-SPIN">
+<package name="PT-SPIN" urn="urn:adsk.eagle:footprint:23299/1" library_version="11">
 <description>&lt;b&gt;Trimm Potentiometer&lt;/b&gt;</description>
 <wire x1="-8.89" y1="-2.54" x2="8.89" y2="-2.54" width="0.127" layer="21"/>
 <wire x1="8.89" y1="-2.54" x2="8.89" y2="2.54" width="0.127" layer="21"/>
@@ -28791,8 +28771,28 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <rectangle x1="-10.16" y1="-1.27" x2="-9.525" y2="-0.381" layer="21"/>
 </package>
 </packages>
+<packages3d>
+<package3d name="PT-10" urn="urn:adsk.eagle:package:23786/1" type="box" library_version="11">
+<description>Trimm Potentiometer</description>
+<packageinstances>
+<packageinstance name="PT-10"/>
+</packageinstances>
+</package3d>
+<package3d name="PT-10S" urn="urn:adsk.eagle:package:23785/1" type="box" library_version="11">
+<description>Trimm Potentiometer</description>
+<packageinstances>
+<packageinstance name="PT-10S"/>
+</packageinstances>
+</package3d>
+<package3d name="PT-SPIN" urn="urn:adsk.eagle:package:23782/1" type="box" library_version="11">
+<description>Trimm Potentiometer</description>
+<packageinstances>
+<packageinstance name="PT-SPIN"/>
+</packageinstances>
+</package3d>
+</packages3d>
 <symbols>
-<symbol name="POTEURO">
+<symbol name="POTEURO" urn="urn:adsk.eagle:symbol:23296/3" library_version="11">
 <wire x1="-2.54" y1="1.27" x2="-2.54" y2="-1.27" width="0.254" layer="94"/>
 <wire x1="2.54" y1="-1.27" x2="2.54" y2="1.27" width="0.254" layer="94"/>
 <wire x1="2.54" y1="1.27" x2="-2.54" y2="1.27" width="0.254" layer="94"/>
@@ -28812,7 +28812,7 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="POTENTIOMETER_" prefix="R" uservalue="yes">
+<deviceset name="POTENTIOMETER_" urn="urn:adsk.eagle:component:23800/3" prefix="R" uservalue="yes" library_version="11">
 <description>&lt;b&gt;Potentiometer&lt;/b&gt;</description>
 <gates>
 <gate name="1" symbol="POTEURO" x="5.08" y="0"/>
@@ -28824,6 +28824,9 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <connect gate="1" pin="2" pad="2"/>
 <connect gate="1" pin="3" pad="3"/>
 </connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:23786/1"/>
+</package3dinstances>
 <technologies>
 <technology name="">
 <attribute name="POPULARITY" value="15" constant="no"/>
@@ -28838,6 +28841,9 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <connect gate="1" pin="2" pad="2"/>
 <connect gate="1" pin="3" pad="3"/>
 </connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:23785/1"/>
+</package3dinstances>
 <technologies>
 <technology name="">
 <attribute name="POPULARITY" value="2" constant="no"/>
@@ -28852,6 +28858,9 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <connect gate="1" pin="2" pad="2"/>
 <connect gate="1" pin="3" pad="3"/>
 </connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:23782/1"/>
+</package3dinstances>
 <technologies>
 <technology name="">
 <attribute name="POPULARITY" value="0" constant="no"/>
@@ -28861,230 +28870,25 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 </technologies>
 </device>
 </devices>
-</deviceset>
-</devicesets>
-</library>
-<library name="adafruit">
-<packages>
-<package name="SOT23-W">
-<description>&lt;b&gt;SOT23&lt;/b&gt; - Wave soldering</description>
-<wire x1="1.5724" y1="0.6604" x2="1.5724" y2="-0.6604" width="0.1524" layer="51"/>
-<wire x1="1.5724" y1="-0.6604" x2="-1.5724" y2="-0.6604" width="0.1524" layer="51"/>
-<wire x1="-1.5724" y1="-0.6604" x2="-1.5724" y2="0.6604" width="0.1524" layer="51"/>
-<wire x1="-1.5724" y1="0.6604" x2="1.5724" y2="0.6604" width="0.1524" layer="51"/>
-<wire x1="-1.5724" y1="-0.3984" x2="-1.5724" y2="0.6604" width="0.1524" layer="21"/>
-<wire x1="1.5724" y1="0.6604" x2="1.5724" y2="-0.3984" width="0.1524" layer="21"/>
-<wire x1="0.2954" y1="-0.6604" x2="-0.3094" y2="-0.6604" width="0.1524" layer="21"/>
-<smd name="3" x="0" y="1.3" dx="2.8" dy="1.4" layer="1"/>
-<smd name="2" x="1.1" y="-1.3" dx="1.2" dy="1.4" layer="1"/>
-<smd name="1" x="-1.1" y="-1.3" dx="1.2" dy="1.4" layer="1"/>
-<text x="2.032" y="0.254" size="0.4064" layer="25">&gt;NAME</text>
-<text x="2.032" y="-0.508" size="0.4064" layer="27">&gt;VALUE</text>
-<rectangle x1="-0.2286" y1="0.7112" x2="0.2286" y2="1.2954" layer="51"/>
-<rectangle x1="0.7112" y1="-1.2954" x2="1.1684" y2="-0.7112" layer="51"/>
-<rectangle x1="-1.1684" y1="-1.2954" x2="-0.7112" y2="-0.7112" layer="51"/>
-</package>
-<package name="SOT23">
-<description>&lt;b&gt;SOT-23&lt;/b&gt;</description>
-<wire x1="1.4224" y1="0.6604" x2="1.4224" y2="-0.6604" width="0.1524" layer="51"/>
-<wire x1="1.4224" y1="-0.6604" x2="-1.4224" y2="-0.6604" width="0.1524" layer="51"/>
-<wire x1="-1.4224" y1="-0.6604" x2="-1.4224" y2="0.6604" width="0.1524" layer="51"/>
-<wire x1="-1.4224" y1="0.6604" x2="1.4224" y2="0.6604" width="0.1524" layer="51"/>
-<smd name="3" x="0" y="1.1" dx="1" dy="1.4" layer="1"/>
-<smd name="2" x="0.95" y="-1.1" dx="1" dy="1.4" layer="1"/>
-<smd name="1" x="-0.95" y="-1.1" dx="1" dy="1.4" layer="1"/>
-<text x="-1.905" y="1.905" size="1.27" layer="25">&gt;NAME</text>
-<text x="-1.905" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="-0.2286" y1="0.7112" x2="0.2286" y2="1.2954" layer="51"/>
-<rectangle x1="0.7112" y1="-1.2954" x2="1.1684" y2="-0.7112" layer="51"/>
-<rectangle x1="-1.1684" y1="-1.2954" x2="-0.7112" y2="-0.7112" layer="51"/>
-</package>
-</packages>
-<symbols>
-<symbol name="MOSFET-N">
-<wire x1="0.762" y1="0.762" x2="0.762" y2="0" width="0.254" layer="94"/>
-<wire x1="0.762" y1="0" x2="0.762" y2="-0.762" width="0.254" layer="94"/>
-<wire x1="0.762" y1="3.175" x2="0.762" y2="2.54" width="0.254" layer="94"/>
-<wire x1="0.762" y1="2.54" x2="0.762" y2="1.905" width="0.254" layer="94"/>
-<wire x1="0.762" y1="0" x2="2.54" y2="0" width="0.1524" layer="94"/>
-<wire x1="2.54" y1="0" x2="2.54" y2="-2.54" width="0.1524" layer="94"/>
-<wire x1="0.762" y1="-1.905" x2="0.762" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="0.762" y1="-2.54" x2="0.762" y2="-3.175" width="0.254" layer="94"/>
-<wire x1="0" y1="2.54" x2="0" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="2.54" y1="-2.54" x2="0.762" y2="-2.54" width="0.1524" layer="94"/>
-<wire x1="3.81" y1="2.54" x2="3.81" y2="0.508" width="0.1524" layer="94"/>
-<wire x1="3.81" y1="0.508" x2="3.81" y2="-2.54" width="0.1524" layer="94"/>
-<wire x1="2.54" y1="-2.54" x2="3.81" y2="-2.54" width="0.1524" layer="94"/>
-<wire x1="0.762" y1="2.54" x2="3.81" y2="2.54" width="0.1524" layer="94"/>
-<wire x1="4.572" y1="0.762" x2="4.318" y2="0.508" width="0.1524" layer="94"/>
-<wire x1="4.318" y1="0.508" x2="3.81" y2="0.508" width="0.1524" layer="94"/>
-<wire x1="3.81" y1="0.508" x2="3.302" y2="0.508" width="0.1524" layer="94"/>
-<wire x1="3.302" y1="0.508" x2="3.048" y2="0.254" width="0.1524" layer="94"/>
-<circle x="2.54" y="-2.54" radius="0.3592" width="0" layer="94"/>
-<circle x="2.54" y="2.54" radius="0.3592" width="0" layer="94"/>
-<text x="5.08" y="0.635" size="1.27" layer="95">&gt;NAME</text>
-<text x="5.08" y="-1.27" size="1.27" layer="96">&gt;VALUE</text>
-<text x="3.175" y="3.175" size="0.8128" layer="93">D</text>
-<text x="3.175" y="-3.81" size="0.8128" layer="93">S</text>
-<text x="-1.27" y="-1.905" size="0.8128" layer="93">G</text>
-<pin name="G" x="-2.54" y="-2.54" visible="pad" length="short"/>
-<pin name="S" x="2.54" y="-5.08" visible="pad" length="short" rot="R90"/>
-<pin name="D" x="2.54" y="5.08" visible="pad" length="short" rot="R270"/>
-<polygon width="0.1524" layer="94">
-<vertex x="3.81" y="0.508"/>
-<vertex x="3.302" y="-0.254"/>
-<vertex x="4.318" y="-0.254"/>
-</polygon>
-<polygon width="0.1524" layer="94">
-<vertex x="1.016" y="0"/>
-<vertex x="2.032" y="0.762"/>
-<vertex x="2.032" y="-0.762"/>
-</polygon>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="MOSFET-N" prefix="Q" uservalue="yes">
-<description>&lt;b&gt;N-Channel Mosfet&lt;/b&gt;
-&lt;ul&gt;
-&lt;li&gt;2N7002E - 60V 260mA SOT23 [Digikey: 2N7002ET1GOSTR-ND] - &lt;b&gt;REEL&lt;/b&gt;&lt;/li&gt;
-&lt;li&gt;BSH103 - 30V 850mA SOT23 [Digikey: 568-5013-1-ND]&lt;/li&gt;
-&lt;/ul&gt;</description>
-<gates>
-<gate name="G$1" symbol="MOSFET-N" x="-2.54" y="0"/>
-</gates>
-<devices>
-<device name="WAVE" package="SOT23-W">
-<connects>
-<connect gate="G$1" pin="D" pad="3"/>
-<connect gate="G$1" pin="G" pad="1"/>
-<connect gate="G$1" pin="S" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="REFLOW" package="SOT23">
-<connects>
-<connect gate="G$1" pin="D" pad="3"/>
-<connect gate="G$1" pin="G" pad="1"/>
-<connect gate="G$1" pin="S" pad="2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
-<library name="ngspice-simulation" urn="urn:adsk.eagle:library:527439">
-<description>SPICE compatible library parts</description>
-<packages>
-</packages>
-<symbols>
-<symbol name="BJT-NPN" urn="urn:adsk.eagle:symbol:527447/4" library_version="18">
-<description>Bipolar NPN Transistor</description>
-<wire x1="-2.54" y1="0" x2="0" y2="0" width="0.1524" layer="94"/>
-<wire x1="0" y1="3.302" x2="0" y2="2.032" width="0.254" layer="94"/>
-<wire x1="0" y1="2.032" x2="0" y2="-2.286" width="0.254" layer="94"/>
-<wire x1="0" y1="-2.286" x2="0" y2="-3.302" width="0.254" layer="94"/>
-<wire x1="0" y1="2.032" x2="2.54" y2="4.064" width="0.254" layer="94"/>
-<wire x1="2.54" y1="4.064" x2="2.54" y2="5.334" width="0.254" layer="94"/>
-<wire x1="0" y1="-2.286" x2="2.54" y2="-4.064" width="0.254" layer="94"/>
-<wire x1="2.54" y1="-4.064" x2="2.54" y2="-5.334" width="0.254" layer="94"/>
-<wire x1="2.032" y1="-3.81" x2="2.032" y2="-3.048" width="0.254" layer="94"/>
-<wire x1="2.032" y1="-3.81" x2="1.27" y2="-3.81" width="0.254" layer="94"/>
-<pin name="B" x="-7.62" y="0" length="middle"/>
-<pin name="C" x="2.54" y="10.16" length="middle" rot="R270"/>
-<pin name="E" x="2.54" y="-10.16" length="middle" rot="R90"/>
-<circle x="1.016" y="0" radius="5.588" width="0.254" layer="94"/>
-<text x="7.62" y="2.54" size="1.778" layer="95">&gt;NAME</text>
-<text x="7.62" y="-2.54" size="1.778" layer="97">&gt;SPICEMODEL</text>
-<text x="7.62" y="0" size="1.778" layer="96">&gt;VALUE</text>
-<text x="7.62" y="-5.08" size="1.778" layer="97">&gt;SPICEEXTRA</text>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="BJT_NPN" urn="urn:adsk.eagle:component:527467/10" prefix="Q" uservalue="yes" library_version="18">
-<description>Bipolar NPN Transistor</description>
-<gates>
-<gate name="G$1" symbol="BJT-NPN" x="0" y="0"/>
-</gates>
-<devices>
-<device name="">
-<technologies>
-<technology name="">
-<attribute name="_EXTERNAL_" value="" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
 <spice>
-<pinmapping spiceprefix="Q">
-<pinmap gate="G$1" pin="B" pinorder="2"/>
-<pinmap gate="G$1" pin="C" pinorder="1"/>
-<pinmap gate="G$1" pin="E" pinorder="3"/>
+<pinmapping spiceprefix="X">
+<pinmap gate="1" pin="1" pinorder="1"/>
+<pinmap gate="1" pin="2" pinorder="2"/>
+<pinmap gate="1" pin="3" pinorder="3"/>
 </pinmapping>
-<model name="QNPN">
-**********************
-* Autodesk EAGLE - Spice Model File
-* Date: 9/17/17
-* basic npn intrinsic model
-**********************
-.MODEL QNPN NPN</model>
+<model name="POT">
+********************************************
+* Autodesk Eagle - Spice Model File
+* Date: 9/25/17
+* Variable resistor PIN1 ---/\/\/\/\--- PIN2
+*                               |
+*                              PIN3
+********************************************
+.subckt POT 1 2 3
+R1 1 3 {val*var/100}
+R2 3 2 {val-val*var/100}
+.ends POT</model>
 </spice>
-</deviceset>
-</devicesets>
-</library>
-<library name="supply1" urn="urn:adsk.eagle:library:371">
-<description>&lt;b&gt;Supply Symbols&lt;/b&gt;&lt;p&gt;
- GND, VCC, 0V, +5V, -5V, etc.&lt;p&gt;
- Please keep in mind, that these devices are necessary for the
- automatic wiring of the supply signals.&lt;p&gt;
- The pin name defined in the symbol is identical to the net which is to be wired automatically.&lt;p&gt;
- In this library the device names are the same as the pin names of the symbols, therefore the correct signal names appear next to the supply symbols in the schematic.&lt;p&gt;
- &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
-<packages>
-</packages>
-<symbols>
-<symbol name="+5V" urn="urn:adsk.eagle:symbol:26929/1" library_version="1">
-<wire x1="1.27" y1="-1.905" x2="0" y2="0" width="0.254" layer="94"/>
-<wire x1="0" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
-<text x="-2.54" y="-5.08" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
-<pin name="+5V" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
-</symbol>
-<symbol name="GND" urn="urn:adsk.eagle:symbol:26925/1" library_version="1">
-<wire x1="-1.905" y1="0" x2="1.905" y2="0" width="0.254" layer="94"/>
-<text x="-2.54" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="GND" x="0" y="2.54" visible="off" length="short" direction="sup" rot="R270"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="+5V" urn="urn:adsk.eagle:component:26963/1" prefix="P+" library_version="1">
-<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
-<gates>
-<gate name="1" symbol="+5V" x="0" y="0"/>
-</gates>
-<devices>
-<device name="">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="GND" urn="urn:adsk.eagle:component:26954/1" prefix="GND" library_version="1">
-<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
-<gates>
-<gate name="1" symbol="GND" x="0" y="0"/>
-</gates>
-<devices>
-<device name="">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
 </deviceset>
 </devicesets>
 </library>
@@ -29094,8 +28898,7 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <variantdefs>
 </variantdefs>
 <classes>
-<class number="0" name="default" width="0.2032" drill="0.4064">
-<clearance class="0" value="0.2032"/>
+<class number="0" name="default" width="0" drill="0">
 </class>
 <class number="1" name="power" width="0.6096" drill="0.4064">
 <clearance class="1" value="0.2032"/>
@@ -29144,7 +28947,7 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <part name="POWER" library="SmartPrj" deviceset="PINHD-1X8" device="" value="8x1F-H8.5"/>
 <part name="PIHEADER" library="SparkFun-Connectors" deviceset="RASPBERRYPI-40-PIN-GPIO" device="_PTH"/>
 <part name="M1" library="SparkFun-Electromechanical" deviceset="SERVO" device=""/>
-<part name="P+9" library="supply1@1" deviceset="+5V" device=""/>
+<part name="P+9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="Q2" library="microbuilder" deviceset="CRYSTAL" device="8.0X3.8" value="32.768"/>
 <part name="R5" library="microbuilder" deviceset="RESISTOR" device="0805_NOOUTLINE" value="10K"/>
 <part name="R6" library="microbuilder" deviceset="RESISTOR" device="0805_NOOUTLINE" value="10K"/>
@@ -29156,14 +28959,17 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <part name="SJ4" library="microbuilder" deviceset="SOLDERJUMPER_CLOSED" device=""/>
 <part name="R7" library="microbuilder" deviceset="RESISTOR" device="0805_NOOUTLINE" value="1K"/>
 <part name="LCD1" library="SparkFun-Displays" deviceset="LCD-16X2" device="SILK"/>
-<part name="P+17" library="supply1@1" deviceset="+5V" device=""/>
-<part name="P+21" library="supply1@1" deviceset="+5V" device=""/>
-<part name="P+20" library="supply1@1" deviceset="+5V" device=""/>
-<part name="R8" library="rcl@1" deviceset="POTENTIOMETER_" device="PT-10"/>
+<part name="P+17" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
+<part name="P+21" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
+<part name="P+20" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
+<part name="R8" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="POTENTIOMETER_" device="PT-10" package3d_urn="urn:adsk.eagle:package:23786/1"/>
+<part name="P+6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="TESTPIN" library="SmartPrj" deviceset="PINHD-1X8" device="" value="8x1F-H8.5"/>
+<part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
+<part name="P+12" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="J1" library="con-headers-jp" deviceset="F-1X18-" device="SIP-100-32Y"/>
-<part name="P+18" library="supply1@1" deviceset="+5V" device=""/>
-<part name="P+19" library="supply1@1" deviceset="+5V" device=""/>
+<part name="P+18" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
+<part name="P+19" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="GND6" library="supply1" deviceset="GND" device=""/>
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
@@ -29177,11 +28983,14 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <part name="GND17" library="supply1" deviceset="GND" device=""/>
 <part name="GND18" library="supply1" deviceset="GND" device=""/>
 <part name="GND22" library="supply1" deviceset="GND" device=""/>
-<part name="GND19" library="supply1@1" deviceset="GND" device=""/>
-<part name="GND26" library="supply1@1" deviceset="GND" device=""/>
+<part name="GND19" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="GND26" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="J2" library="SparkFun-Connectors" deviceset="USB_A" device="_SMT_FEMALE"/>
+<part name="R2" library="SmartPrj" deviceset="R-EU_" device="R0603" value="3.3k"/>
+<part name="R3" library="SmartPrj" deviceset="R-EU_" device="R0603" value="1.6k"/>
+<part name="GND27" library="supply1" deviceset="GND" device=""/>
 <part name="J3" library="SparkFun-Connectors" deviceset="USB_MICRO-B" device="_FEMALE-SMT"/>
-<part name="GND28" library="supply1@1" deviceset="GND" device=""/>
+<part name="GND28" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+13" library="supply1" deviceset="+5V" device=""/>
 <part name="R4" library="SmartPrj" deviceset="R-EU_" device="R0603" value="1k"/>
 <part name="R9" library="SmartPrj" deviceset="R-EU_" device="R0603" value="1k"/>
@@ -29189,26 +28998,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <part name="R11" library="SmartPrj" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="R12" library="SmartPrj" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="R13" library="SmartPrj" deviceset="R-EU_" device="R0603" value="220"/>
-<part name="Q1" library="adafruit" deviceset="MOSFET-N" device="REFLOW" value="BSS138"/>
-<part name="+3V1" library="supply1" deviceset="+3V3" device=""/>
-<part name="+3V2" library="supply1" deviceset="+3V3" device=""/>
-<part name="P+11" library="supply1" deviceset="+5V" device=""/>
-<part name="Q3" library="adafruit" deviceset="MOSFET-N" device="REFLOW" value="BSS138"/>
-<part name="P+14" library="supply1" deviceset="+5V" device=""/>
-<part name="+3V3" library="supply1" deviceset="+3V3" device=""/>
-<part name="+3V4" library="supply1" deviceset="+3V3" device=""/>
-<part name="R2" library="SmartPrj" deviceset="R-EU_" device="R0603" value="10k"/>
-<part name="R3" library="SmartPrj" deviceset="R-EU_" device="R0603" value="10k"/>
-<part name="R14" library="SmartPrj" deviceset="R-EU_" device="R0603" value="10k"/>
-<part name="R15" library="SmartPrj" deviceset="R-EU_" device="R0603" value="10k"/>
-<part name="+3V5" library="supply1" deviceset="+3V3" device=""/>
-<part name="+3V6" library="supply1" deviceset="+3V3" device=""/>
-<part name="+3V7" library="supply1" deviceset="+3V3" device=""/>
-<part name="R16" library="SmartPrj" deviceset="R-EU_" device="R0603" value="10k"/>
-<part name="R17" library="SmartPrj" deviceset="R-EU_" device="R0603" value="1k"/>
-<part name="Q4" library="ngspice-simulation" library_urn="urn:adsk.eagle:library:527439" deviceset="BJT_NPN" device=""/>
-<part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
-<part name="GND21" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -29408,9 +29197,18 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <attribute name="NAME" x="210.82" y="91.44" size="1.778" layer="95"/>
 <attribute name="VALUE" x="210.82" y="88.9" size="1.778" layer="96"/>
 </instance>
+<instance part="P+6" gate="1" x="264.16" y="134.62" smashed="yes">
+<attribute name="VALUE" x="261.62" y="129.54" size="1.778" layer="96" rot="R90"/>
+</instance>
 <instance part="TESTPIN" gate="A" x="68.58" y="10.16" smashed="yes">
 <attribute name="NAME" x="72.39" y="10.795" size="1.778" layer="95"/>
 <attribute name="VALUE" x="62.23" y="-2.54" size="1.778" layer="96"/>
+</instance>
+<instance part="P+2" gate="1" x="297.18" y="50.8" smashed="yes">
+<attribute name="VALUE" x="294.64" y="45.72" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="P+12" gate="1" x="271.78" y="33.02" smashed="yes">
+<attribute name="VALUE" x="269.24" y="27.94" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="J1" gate="G$1" x="218.44" y="-7.62" smashed="yes">
 <attribute name="VALUE" x="217.17" y="-35.56" size="1.778" layer="96"/>
@@ -29467,6 +29265,17 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <attribute name="NAME" x="12.7" y="178.054" size="1.778" layer="95" font="vector" rot="MR0"/>
 <attribute name="VALUE" x="12.7" y="160.274" size="1.778" layer="96" font="vector" rot="R180" align="top-left"/>
 </instance>
+<instance part="R2" gate="G$1" x="320.04" y="83.82" smashed="yes" rot="R90">
+<attribute name="NAME" x="317.5" y="88.0364" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="318.135" y="83.312" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="R3" gate="G$1" x="330.2" y="91.44" smashed="yes" rot="R180">
+<attribute name="NAME" x="327.66" y="87.2236" size="1.778" layer="95"/>
+<attribute name="VALUE" x="334.645" y="86.868" size="1.778" layer="96"/>
+</instance>
+<instance part="GND27" gate="1" x="320.04" y="73.66" smashed="yes">
+<attribute name="VALUE" x="317.5" y="71.12" size="1.778" layer="96"/>
+</instance>
 <instance part="J3" gate="J1" x="0" y="137.16" smashed="yes">
 <attribute name="VALUE" x="-2.54" y="127.254" size="1.778" layer="96" font="vector" rot="MR180" align="top-left"/>
 <attribute name="NAME" x="-2.54" y="147.574" size="1.778" layer="95" font="vector"/>
@@ -29500,75 +29309,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <instance part="R13" gate="G$1" x="218.44" y="63.5" smashed="yes" rot="R180">
 <attribute name="NAME" x="215.9" y="59.2836" size="1.778" layer="95"/>
 <attribute name="VALUE" x="222.885" y="58.928" size="1.778" layer="96"/>
-</instance>
-<instance part="Q1" gate="G$1" x="345.44" y="96.52" smashed="yes" rot="R270">
-<attribute name="NAME" x="346.075" y="91.44" size="1.27" layer="95" rot="R270"/>
-<attribute name="VALUE" x="344.17" y="91.44" size="1.27" layer="96" rot="R270"/>
-</instance>
-<instance part="+3V1" gate="G$1" x="342.9" y="114.3" smashed="yes" rot="MR0">
-<attribute name="VALUE" x="345.44" y="109.22" size="1.778" layer="96" rot="MR90"/>
-</instance>
-<instance part="+3V2" gate="G$1" x="332.74" y="114.3" smashed="yes">
-<attribute name="VALUE" x="330.2" y="109.22" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="P+11" gate="1" x="360.68" y="114.3" smashed="yes">
-<attribute name="VALUE" x="358.14" y="109.22" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="Q3" gate="G$1" x="345.44" y="68.58" smashed="yes" rot="R270">
-<attribute name="NAME" x="346.075" y="63.5" size="1.27" layer="95" rot="R270"/>
-<attribute name="VALUE" x="344.17" y="63.5" size="1.27" layer="96" rot="R270"/>
-</instance>
-<instance part="P+14" gate="1" x="360.68" y="83.82" smashed="yes">
-<attribute name="VALUE" x="358.14" y="78.74" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="+3V3" gate="G$1" x="332.74" y="83.82" smashed="yes">
-<attribute name="VALUE" x="330.2" y="78.74" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="+3V4" gate="G$1" x="342.9" y="81.28" smashed="yes" rot="MR0">
-<attribute name="VALUE" x="345.44" y="76.2" size="1.778" layer="96" rot="MR90"/>
-</instance>
-<instance part="R2" gate="G$1" x="360.68" y="101.6" smashed="yes" rot="R90">
-<attribute name="NAME" x="356.4636" y="104.14" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="356.108" y="97.155" size="1.778" layer="96" rot="R270"/>
-</instance>
-<instance part="R3" gate="G$1" x="332.74" y="101.6" smashed="yes" rot="R90">
-<attribute name="NAME" x="328.5236" y="104.14" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="328.168" y="97.155" size="1.778" layer="96" rot="R270"/>
-</instance>
-<instance part="R14" gate="G$1" x="360.68" y="73.66" smashed="yes" rot="R90">
-<attribute name="NAME" x="356.4636" y="76.2" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="356.108" y="69.215" size="1.778" layer="96" rot="R270"/>
-</instance>
-<instance part="R15" gate="G$1" x="332.74" y="73.66" smashed="yes" rot="R90">
-<attribute name="NAME" x="328.5236" y="76.2" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="328.168" y="69.215" size="1.778" layer="96" rot="R270"/>
-</instance>
-<instance part="+3V5" gate="G$1" x="254" y="127" smashed="yes">
-<attribute name="VALUE" x="251.46" y="121.92" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="+3V6" gate="G$1" x="297.18" y="50.8" smashed="yes">
-<attribute name="VALUE" x="294.64" y="45.72" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="+3V7" gate="G$1" x="271.78" y="40.64" smashed="yes">
-<attribute name="VALUE" x="269.24" y="35.56" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="R16" gate="G$1" x="91.44" y="50.8" smashed="yes" rot="R180">
-<attribute name="NAME" x="88.9" y="46.5836" size="1.778" layer="95"/>
-<attribute name="VALUE" x="95.885" y="46.228" size="1.778" layer="96"/>
-</instance>
-<instance part="R17" gate="G$1" x="73.66" y="55.88" smashed="yes" rot="R180">
-<attribute name="NAME" x="71.12" y="51.6636" size="1.778" layer="95"/>
-<attribute name="VALUE" x="78.105" y="51.308" size="1.778" layer="96"/>
-</instance>
-<instance part="Q4" gate="G$1" x="78.74" y="45.72" smashed="yes">
-<attribute name="NAME" x="86.36" y="48.26" size="1.778" layer="95"/>
-<attribute name="VALUE" x="86.36" y="45.72" size="1.778" layer="96"/>
-</instance>
-<instance part="P+2" gate="1" x="68.58" y="58.42" smashed="yes">
-<attribute name="VALUE" x="66.04" y="53.34" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="GND21" gate="1" x="81.28" y="33.02" smashed="yes">
-<attribute name="VALUE" x="78.74" y="30.48" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -29668,6 +29408,25 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <junction x="223.52" y="96.52"/>
 </segment>
 <segment>
+<pinref part="P+6" gate="1" pin="+5V"/>
+<wire x1="264.16" y1="132.08" x2="264.16" y2="129.54" width="0.1524" layer="91"/>
+<pinref part="PIHEADER" gate="G$1" pin="5V"/>
+<wire x1="264.16" y1="129.54" x2="271.78" y2="129.54" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R7" gate="G$1" pin="1"/>
+<wire x1="297.18" y1="48.26" x2="297.18" y2="43.18" width="0.1524" layer="91"/>
+<pinref part="P+2" gate="1" pin="+5V"/>
+</segment>
+<segment>
+<pinref part="SJ3" gate="G$1" pin="2"/>
+<pinref part="SJ4" gate="G$1" pin="2"/>
+<wire x1="274.32" y1="30.48" x2="271.78" y2="30.48" width="0.1524" layer="91"/>
+<pinref part="P+12" gate="1" pin="+5V"/>
+<wire x1="271.78" y1="30.48" x2="266.7" y2="30.48" width="0.1524" layer="91"/>
+<junction x="271.78" y="30.48"/>
+</segment>
+<segment>
 <pinref part="POWER" gate="A" pin="2"/>
 <wire x1="38.1" y1="17.78" x2="30.48" y2="17.78" width="0.1524" layer="91"/>
 <pinref part="P+18" gate="1" pin="+5V"/>
@@ -29682,20 +29441,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <wire x1="27.94" y1="180.34" x2="27.94" y2="175.26" width="0.1524" layer="91"/>
 <pinref part="J2" gate="G$1" pin="VBUS"/>
 <wire x1="27.94" y1="175.26" x2="15.24" y2="175.26" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+11" gate="1" pin="+5V"/>
-<pinref part="R2" gate="G$1" pin="2"/>
-<wire x1="360.68" y1="111.76" x2="360.68" y2="106.68" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="P+14" gate="1" pin="+5V"/>
-<pinref part="R14" gate="G$1" pin="2"/>
-<wire x1="360.68" y1="81.28" x2="360.68" y2="78.74" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="R17" gate="G$1" pin="2"/>
-<pinref part="P+2" gate="1" pin="+5V"/>
 </segment>
 </net>
 <net name="GND" class="2">
@@ -29848,6 +29593,11 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <wire x1="271.78" y1="76.2" x2="264.16" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 <segment>
+<pinref part="R2" gate="G$1" pin="1"/>
+<pinref part="GND27" gate="1" pin="GND"/>
+<wire x1="320.04" y1="78.74" x2="320.04" y2="76.2" width="0.1524" layer="91"/>
+</segment>
+<segment>
 <pinref part="J3" gate="J1" pin="GND"/>
 <wire x1="5.08" y1="134.62" x2="15.24" y2="134.62" width="0.1524" layer="91"/>
 <pinref part="GND28" gate="1" pin="GND"/>
@@ -29857,10 +29607,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <pinref part="J2" gate="G$1" pin="GND"/>
 <pinref part="GND19" gate="1" pin="GND"/>
 <wire x1="15.24" y1="165.1" x2="30.48" y2="165.1" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="Q4" gate="G$1" pin="E"/>
-<pinref part="GND21" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="AREF" class="0">
@@ -29965,13 +29711,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <wire x1="66.04" y1="17.78" x2="55.88" y2="17.78" width="0.1524" layer="91"/>
 <label x="58.42" y="17.78" size="1.778" layer="95"/>
 </segment>
-<segment>
-<wire x1="287.02" y1="2.54" x2="266.7" y2="2.54" width="0.1524" layer="91"/>
-<wire x1="266.7" y1="2.54" x2="266.7" y2="5.08" width="0.1524" layer="91"/>
-<label x="274.32" y="2.54" size="1.778" layer="95"/>
-<pinref part="R6" gate="G$1" pin="1"/>
-<pinref part="IC4" gate="G$1" pin="SDA"/>
-</segment>
 </net>
 <net name="SCL" class="0">
 <segment>
@@ -29989,12 +29728,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <pinref part="TESTPIN" gate="A" pin="1"/>
 <wire x1="66.04" y1="20.32" x2="55.88" y2="20.32" width="0.1524" layer="91"/>
 <label x="58.42" y="20.32" size="1.778" layer="95"/>
-</segment>
-<segment>
-<wire x1="287.02" y1="5.08" x2="274.32" y2="5.08" width="0.1524" layer="91"/>
-<label x="279.4" y="5.08" size="1.778" layer="95"/>
-<pinref part="R5" gate="G$1" pin="2"/>
-<pinref part="IC4" gate="G$1" pin="SCL"/>
 </segment>
 </net>
 <net name="PB3" class="0">
@@ -30052,6 +29785,15 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <wire x1="91.44" y1="-10.16" x2="104.14" y2="-10.16" width="0.1524" layer="91"/>
 <label x="93.98" y="-9.525" size="1.778" layer="95"/>
 <pinref part="IC3" gate="1" pin="PH1(TXD2)"/>
+</segment>
+<segment>
+<pinref part="PIHEADER" gate="G$1" pin="RXI/GP15"/>
+<pinref part="R3" gate="G$1" pin="2"/>
+<wire x1="302.26" y1="91.44" x2="320.04" y2="91.44" width="0.1524" layer="91"/>
+<pinref part="R2" gate="G$1" pin="2"/>
+<wire x1="320.04" y1="91.44" x2="325.12" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="320.04" y1="88.9" x2="320.04" y2="91.44" width="0.1524" layer="91"/>
+<junction x="320.04" y="91.44"/>
 </segment>
 </net>
 <net name="PC0" class="0">
@@ -30227,6 +29969,33 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <junction x="297.18" y="30.48"/>
 </segment>
 </net>
+<net name="PISDA" class="0">
+<segment>
+<pinref part="PIHEADER" gate="G$1" pin="SDA/GP2"/>
+<wire x1="302.26" y1="124.46" x2="309.88" y2="124.46" width="0.1524" layer="91"/>
+<label x="307.34" y="124.46" size="1.778" layer="95"/>
+</segment>
+<segment>
+<wire x1="287.02" y1="2.54" x2="266.7" y2="2.54" width="0.1524" layer="91"/>
+<wire x1="266.7" y1="2.54" x2="266.7" y2="5.08" width="0.1524" layer="91"/>
+<label x="274.32" y="2.54" size="1.778" layer="95"/>
+<pinref part="R6" gate="G$1" pin="1"/>
+<pinref part="IC4" gate="G$1" pin="SDA"/>
+</segment>
+</net>
+<net name="PISCL" class="0">
+<segment>
+<pinref part="PIHEADER" gate="G$1" pin="SCL/GP3\"/>
+<wire x1="302.26" y1="121.92" x2="309.88" y2="121.92" width="0.1524" layer="91"/>
+<label x="307.34" y="121.92" size="1.778" layer="95"/>
+</segment>
+<segment>
+<wire x1="287.02" y1="5.08" x2="274.32" y2="5.08" width="0.1524" layer="91"/>
+<label x="279.4" y="5.08" size="1.778" layer="95"/>
+<pinref part="R5" gate="G$1" pin="2"/>
+<pinref part="IC4" gate="G$1" pin="SCL"/>
+</segment>
+</net>
 <net name="N$11" class="0">
 <segment>
 <pinref part="LCD1" gate="LCD1" pin="A"/>
@@ -30250,24 +30019,9 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <label x="177.8" y="30.48" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="Q1" gate="G$1" pin="S"/>
-<wire x1="340.36" y1="93.98" x2="332.74" y2="93.98" width="0.1524" layer="91"/>
 <pinref part="R3" gate="G$1" pin="1"/>
-<wire x1="332.74" y1="93.98" x2="302.26" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="332.74" y1="96.52" x2="332.74" y2="93.98" width="0.1524" layer="91"/>
-<junction x="332.74" y="93.98"/>
-<pinref part="PIHEADER" gate="G$1" pin="TXO/GP14"/>
-</segment>
-<segment>
-<wire x1="350.52" y1="66.04" x2="360.68" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="360.68" y1="66.04" x2="370.84" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="370.84" y1="66.04" x2="370.84" y2="91.44" width="0.1524" layer="91"/>
-<pinref part="Q3" gate="G$1" pin="D"/>
-<pinref part="R14" gate="G$1" pin="1"/>
-<wire x1="360.68" y1="68.58" x2="360.68" y2="66.04" width="0.1524" layer="91"/>
-<junction x="360.68" y="66.04"/>
-<wire x1="370.84" y1="91.44" x2="381" y2="91.44" width="0.1524" layer="91"/>
-<label x="381" y="88.9" size="1.778" layer="95"/>
+<wire x1="335.28" y1="91.44" x2="340.36" y2="91.44" width="0.1524" layer="91"/>
+<label x="342.9" y="91.44" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="RXD0" class="0">
@@ -30277,24 +30031,9 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <label x="177.8" y="27.94" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="322.58" y1="91.44" x2="322.58" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="322.58" y1="66.04" x2="332.74" y2="66.04" width="0.1524" layer="91"/>
-<pinref part="Q3" gate="G$1" pin="S"/>
-<pinref part="R15" gate="G$1" pin="1"/>
-<wire x1="332.74" y1="66.04" x2="340.36" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="332.74" y1="68.58" x2="332.74" y2="66.04" width="0.1524" layer="91"/>
-<junction x="332.74" y="66.04"/>
-<pinref part="PIHEADER" gate="G$1" pin="RXI/GP15"/>
-<wire x1="302.26" y1="91.44" x2="322.58" y2="91.44" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="Q1" gate="G$1" pin="D"/>
-<pinref part="R2" gate="G$1" pin="1"/>
-<wire x1="360.68" y1="93.98" x2="350.52" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="360.68" y1="96.52" x2="360.68" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="360.68" y1="93.98" x2="381" y2="93.98" width="0.1524" layer="91"/>
-<junction x="360.68" y="93.98"/>
-<label x="378.46" y="96.52" size="1.778" layer="95"/>
+<pinref part="PIHEADER" gate="G$1" pin="TXO/GP14"/>
+<wire x1="302.26" y1="93.98" x2="309.88" y2="93.98" width="0.1524" layer="91"/>
+<label x="304.8" y="93.98" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PB4" class="0">
@@ -30372,22 +30111,12 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <label x="203.2" y="0" size="1.778" layer="95"/>
 <pinref part="J1" gate="G$1" pin="6"/>
 </segment>
-<segment>
-<pinref part="IC3" gate="1" pin="PJ1(TXD3/PCINT10)"/>
-<wire x1="104.14" y1="12.7" x2="91.44" y2="12.7" width="0.1524" layer="91"/>
-<label x="88.9" y="15.24" size="1.778" layer="95"/>
-</segment>
 </net>
 <net name="RXD3" class="0">
 <segment>
 <wire x1="213.36" y1="-2.54" x2="200.66" y2="-2.54" width="0.1524" layer="91"/>
 <label x="203.2" y="-2.54" size="1.778" layer="95"/>
 <pinref part="J1" gate="G$1" pin="7"/>
-</segment>
-<segment>
-<pinref part="IC3" gate="1" pin="PJ0(RXD3/PCINT9)"/>
-<wire x1="104.14" y1="10.16" x2="91.44" y2="10.16" width="0.1524" layer="91"/>
-<label x="88.9" y="7.62" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PD5" class="0">
@@ -30431,79 +30160,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <pinref part="J1" gate="G$1" pin="5"/>
 </segment>
 </net>
-<net name="+3V3" class="0">
-<segment>
-<wire x1="342.9" y1="99.06" x2="342.9" y2="111.76" width="0.1524" layer="91"/>
-<pinref part="+3V1" gate="G$1" pin="+3V3"/>
-<pinref part="Q1" gate="G$1" pin="G"/>
-</segment>
-<segment>
-<pinref part="+3V2" gate="G$1" pin="+3V3"/>
-<pinref part="R3" gate="G$1" pin="2"/>
-<wire x1="332.74" y1="111.76" x2="332.74" y2="106.68" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<wire x1="342.9" y1="78.74" x2="342.9" y2="71.12" width="0.1524" layer="91"/>
-<pinref part="Q3" gate="G$1" pin="G"/>
-<pinref part="+3V4" gate="G$1" pin="+3V3"/>
-</segment>
-<segment>
-<pinref part="+3V3" gate="G$1" pin="+3V3"/>
-<pinref part="R15" gate="G$1" pin="2"/>
-<wire x1="332.74" y1="81.28" x2="332.74" y2="78.74" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="+3V5" gate="G$1" pin="+3V3"/>
-<pinref part="PIHEADER" gate="G$1" pin="3.3V"/>
-<wire x1="254" y1="124.46" x2="271.78" y2="124.46" width="0.1524" layer="91"/>
-<wire x1="271.78" y1="124.46" x2="271.78" y2="127" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="R7" gate="G$1" pin="1"/>
-<wire x1="297.18" y1="48.26" x2="297.18" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="+3V6" gate="G$1" pin="+3V3"/>
-</segment>
-<segment>
-<pinref part="SJ3" gate="G$1" pin="2"/>
-<pinref part="SJ4" gate="G$1" pin="2"/>
-<wire x1="274.32" y1="30.48" x2="271.78" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="+3V7" gate="G$1" pin="+3V3"/>
-<wire x1="271.78" y1="30.48" x2="266.7" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="271.78" y1="38.1" x2="271.78" y2="30.48" width="0.1524" layer="91"/>
-<junction x="271.78" y="30.48"/>
-</segment>
-</net>
-<net name="OUT" class="0">
-<segment>
-<pinref part="PIHEADER" gate="G$1" pin="SCL/GP3\"/>
-<wire x1="302.26" y1="121.92" x2="307.34" y2="121.92" width="0.1524" layer="91"/>
-<label x="302.26" y="121.92" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="Q4" gate="G$1" pin="C"/>
-<pinref part="R17" gate="G$1" pin="1"/>
-<wire x1="81.28" y1="55.88" x2="78.74" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="81.28" y1="55.88" x2="81.28" y2="63.5" width="0.1524" layer="91"/>
-<junction x="81.28" y="55.88"/>
-<label x="83.82" y="58.42" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="N$1" class="0">
-<segment>
-<pinref part="IC3" gate="1" pin="PK7(ADC15/PCINT23)"/>
-<wire x1="104.14" y1="50.8" x2="96.52" y2="50.8" width="0.1524" layer="91"/>
-<pinref part="R16" gate="G$1" pin="1"/>
-</segment>
-</net>
-<net name="N$4" class="0">
-<segment>
-<pinref part="Q4" gate="G$1" pin="B"/>
-<wire x1="71.12" y1="45.72" x2="71.12" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="71.12" y1="30.48" x2="86.36" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="R16" gate="G$1" pin="2"/>
-<wire x1="86.36" y1="30.48" x2="86.36" y2="50.8" width="0.1524" layer="91"/>
-</segment>
-</net>
 </nets>
 </sheet>
 </sheets>
@@ -30518,7 +30174,9 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <approved hash="204,1,104.14,104.14,IC3,VCC2,,,,"/>
 <approved hash="204,1,104.14,101.6,IC3,VCC3,,,,"/>
 <approved hash="204,1,33.02,-20.32,RESET,5-GND,,,,"/>
+<approved hash="204,1,271.78,127,PIHEADER,3.3V,,,,"/>
 <approved hash="202,1,302.26,111.76,PIHEADER,CIPO/GP9,,,,"/>
+<approved hash="104,1,271.78,129.54,PIHEADER,5V,+5V,,,"/>
 <approved hash="104,1,317.5,5.08,IC4,VBAT,VBAT1,,,"/>
 <approved hash="104,1,317.5,2.54,IC4,VSS,GND,,,"/>
 <approved hash="104,1,287.02,10.16,IC4,VDD,N$10,,,"/>
@@ -30537,6 +30195,11 @@ with this version.
 Since Version 8.3, EAGLE supports URNs for individual library
 assets (packages, symbols, and devices). The URNs of those assets
 will not be understood (or retained) with this version.
+</note>
+<note version="8.3" severity="warning">
+Since Version 8.3, EAGLE supports the association of 3D packages
+with devices in libraries, schematics, and board files. Those 3D
+packages will not be understood (or retained) with this version.
 </note>
 <note version="8.4" severity="warning">
 Since Version 8.4, EAGLE supports properties for SPICE simulation. 
