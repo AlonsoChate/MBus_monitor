@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
@@ -3651,17 +3651,7 @@ design rules under a new name.</description>
 <wire x1="96.57588125" y1="34.65321875" x2="92.456" y2="30.5333375" width="0.2032" layer="1"/>
 <wire x1="96.57588125" y1="36.41851875" x2="96.57588125" y2="34.65321875" width="0.2032" layer="1"/>
 <wire x1="97.6376" y1="35.3568" x2="98.552" y2="35.306" width="0.2032" layer="1"/>
-<wire x1="13.1064" y1="18.1864" x2="13.1064" y2="17.26235625" width="0.2032" layer="1"/>
-<wire x1="13.8176" y1="18.8976" x2="13.1064" y2="18.1864" width="0.2032" layer="1"/>
-<wire x1="13.8176" y1="19.1008" x2="13.8176" y2="18.8976" width="0.2032" layer="1"/>
-<wire x1="35.9664" y1="19.1008" x2="13.8176" y2="19.1008" width="0.2032" layer="16"/>
-<wire x1="68.7832" y1="51.9176" x2="35.9664" y2="19.1008" width="0.2032" layer="16"/>
-<wire x1="71.3232" y1="51.9176" x2="68.7832" y2="51.9176" width="0.2032" layer="16"/>
-<wire x1="71.9328" y1="52.5272" x2="71.3232" y2="51.9176" width="0.2032" layer="1"/>
-<wire x1="72.7456" y1="52.5272" x2="71.9328" y2="52.5272" width="0.2032" layer="1"/>
 <wire x1="72.7456" y1="52.5272" x2="72.77" y2="52.482" width="0.2032" layer="1"/>
-<via x="13.8176" y="19.1008" extent="1-16" drill="0.4064"/>
-<via x="71.3232" y="51.9176" extent="1-16" drill="0.4064"/>
 </signal>
 <signal name="+3V3">
 <contactref element="Q1" pad="1"/>
