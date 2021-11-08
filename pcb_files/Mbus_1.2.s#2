@@ -28999,14 +28999,14 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <class number="0" name="default" width="0.2032" drill="0.4064">
 <clearance class="0" value="0.2032"/>
 </class>
-<class number="1" name="power" width="0.8128" drill="0.8128">
-<clearance class="1" value="0.254"/>
+<class number="1" name="power" width="0.6096" drill="0.4064">
+<clearance class="1" value="0.2032"/>
 </class>
-<class number="2" name="gnd" width="0.6096" drill="0.6096">
-<clearance class="2" value="0.254"/>
+<class number="2" name="gnd" width="0.3048" drill="0.4064">
+<clearance class="2" value="0.2032"/>
 </class>
-<class number="3" name="power usb" width="0.8128" drill="0.8128">
-<clearance class="3" value="0.254"/>
+<class number="3" name="power usb" width="0.508" drill="0.4064">
+<clearance class="3" value="0.2032"/>
 </class>
 </classes>
 <parts>
@@ -29463,7 +29463,7 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <busses>
 </busses>
 <nets>
-<net name="+5V" class="1">
+<net name="+5V" class="3">
 <segment>
 <wire x1="299.72" y1="157.48" x2="299.72" y2="154.94" width="0.1524" layer="91"/>
 <wire x1="299.72" y1="154.94" x2="287.02" y2="154.94" width="0.1524" layer="91"/>
@@ -30306,7 +30306,7 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <pinref part="J1" gate="G$1" pin="5"/>
 </segment>
 </net>
-<net name="+3V3" class="1">
+<net name="+3V3" class="0">
 <segment>
 <wire x1="342.9" y1="99.06" x2="342.9" y2="111.76" width="0.1524" layer="91"/>
 <pinref part="+3V1" gate="G$1" pin="+3V3"/>
