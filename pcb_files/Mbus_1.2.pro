@@ -2,24 +2,24 @@ EAGLE AutoRouter Statistics:
 
 Job           : C:/Users/caiyiteng/Desktop/Fall 2021/EECS473/project/MBus_monitor/pcb_files/Mbus_1.2.brd
 
-Start at      : 12:33:12 (2021/11/9)
-End at        : 12:37:12 (2021/11/9)
-Elapsed time  : 00:03:25
+Start at      : 13:10:31 (2021/11/9)
+End at        : 13:14:16 (2021/11/9)
+Elapsed time  : 00:03:42
 
-Signals       :    60   RoutingGrid: 4 mil  Layers: 2
-Connections   :   139   predefined:  48 ( 0 Vias )
+Signals       :    62   RoutingGrid: 4.5 mil  Layers: 2
+Connections   :   137   predefined:  49 ( 0 Vias )
 
-Router memory :   4461072
+Router memory :   3535608
 
-Passname          : TopRouter     Route Optimize1 Optimize2 Optimize3 Optimize4
+Passname          : TopRouter     Route Optimize1 Optimize2 Optimize3 Optimize4 Optimize5 Optimize6 Optimize7 Optimize8 Optimize9Optimize10Optimize11Optimize12
 
-Time per pass     :  00:01:46  00:00:23  00:00:19  00:00:18  00:00:19  00:00:20
-Number of Ripups  :         0         1         0         0         0         0
-max. Level        :         0         1         0         0         0         0
-max. Total        :         0         1         0         0         0         0
+Time per pass     :  00:02:17  00:00:11  00:00:06  00:00:06  00:00:07  00:00:06  00:00:06  00:00:06  00:00:06  00:00:06  00:00:06  00:00:06  00:00:06  00:00:07
+Number of Ripups  :         0         0         0         0         0         0         0         0         0         0         0         0         0         0
+max. Level        :         0         1         0         0         0         0         0         0         0         0         0         0         0         0
+max. Total        :         0         0         0         0         0         0         0         0         0         0         0         0         0         0
 
-Routed            :         0        84        84        84        84        84
-Vias              :         0        30        30        30        27        27
-Resolution        :    34.5 %    95.0 %    95.0 %    95.0 %    95.0 %    95.0 %
+Routed            :         0        59        59        59        59        59        59        59        59        59        59        59        59        59
+Vias              :         0        16        15        15        15        15        15        15        11        11        11        11        11        11
+Resolution        :    35.8 %    78.8 %    78.8 %    78.8 %    78.8 %    78.8 %    78.8 %    78.8 %    78.8 %    78.8 %    78.8 %    78.8 %    78.8 %    78.8 %
 
-Final             : 已完成 93.5%。多边形可能会散乱。
+Final             : 已完成 78.1%。多边形可能会散乱。
