@@ -29920,20 +29920,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <pinref part="R9" gate="G$1" pin="1"/>
 </segment>
 </net>
-<net name="RXD2" class="0">
-<segment>
-<wire x1="91.44" y1="-12.7" x2="104.14" y2="-12.7" width="0.1524" layer="91"/>
-<label x="93.98" y="-12.065" size="1.778" layer="95"/>
-<pinref part="IC3" gate="1" pin="PH0(RXD2)"/>
-</segment>
-</net>
-<net name="TXD2" class="0">
-<segment>
-<wire x1="91.44" y1="-10.16" x2="104.14" y2="-10.16" width="0.1524" layer="91"/>
-<label x="93.98" y="-9.525" size="1.778" layer="95"/>
-<pinref part="IC3" gate="1" pin="PH1(TXD2)"/>
-</segment>
-</net>
 <net name="PC0" class="0">
 <segment>
 <wire x1="190.5" y1="73.66" x2="175.26" y2="73.66" width="0.1524" layer="91"/>

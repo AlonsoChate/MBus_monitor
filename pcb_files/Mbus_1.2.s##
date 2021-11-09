@@ -29920,20 +29920,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <pinref part="R9" gate="G$1" pin="1"/>
 </segment>
 </net>
-<net name="RXD2" class="0">
-<segment>
-<wire x1="91.44" y1="-12.7" x2="104.14" y2="-12.7" width="0.1524" layer="91"/>
-<label x="93.98" y="-12.065" size="1.778" layer="95"/>
-<pinref part="IC3" gate="1" pin="PH0(RXD2)"/>
-</segment>
-</net>
-<net name="TXD2" class="0">
-<segment>
-<wire x1="91.44" y1="-10.16" x2="104.14" y2="-10.16" width="0.1524" layer="91"/>
-<label x="93.98" y="-9.525" size="1.778" layer="95"/>
-<pinref part="IC3" gate="1" pin="PH1(TXD2)"/>
-</segment>
-</net>
 <net name="PC0" class="0">
 <segment>
 <wire x1="190.5" y1="73.66" x2="175.26" y2="73.66" width="0.1524" layer="91"/>
@@ -30004,13 +29990,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <pinref part="LCD1" gate="LCD1" pin="RS"/>
 <wire x1="236.22" y1="91.44" x2="228.6" y2="91.44" width="0.1524" layer="91"/>
 <label x="231.14" y="91.44" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="PC6" class="0">
-<segment>
-<wire x1="190.5" y1="88.9" x2="175.26" y2="88.9" width="0.1524" layer="91"/>
-<label x="177.165" y="89.535" size="1.778" layer="95"/>
-<pinref part="IC3" gate="1" pin="(A14)PC6"/>
 </segment>
 </net>
 <net name="PB7" class="0">
@@ -30155,27 +30134,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <wire x1="360.68" y1="93.98" x2="381" y2="93.98" width="0.1524" layer="91"/>
 <junction x="360.68" y="93.98"/>
 <label x="378.46" y="96.52" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="PB4" class="0">
-<segment>
-<pinref part="IC3" gate="1" pin="(OC2A/PCINT4)PB4"/>
-<wire x1="175.26" y1="106.68" x2="182.88" y2="106.68" width="0.1524" layer="91"/>
-<label x="177.8" y="106.68" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="PB5" class="0">
-<segment>
-<pinref part="IC3" gate="1" pin="(OC1A/PCINT5)PB5"/>
-<wire x1="175.26" y1="109.22" x2="182.88" y2="109.22" width="0.1524" layer="91"/>
-<label x="177.8" y="109.22" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="PB6" class="0">
-<segment>
-<pinref part="IC3" gate="1" pin="(OC1B/PCINT6)PB6"/>
-<wire x1="175.26" y1="111.76" x2="182.88" y2="111.76" width="0.1524" layer="91"/>
-<label x="177.8" y="111.76" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="TXD1" class="0">
