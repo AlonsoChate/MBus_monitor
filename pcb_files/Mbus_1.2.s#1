@@ -29463,7 +29463,7 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <busses>
 </busses>
 <nets>
-<net name="+5V" class="3">
+<net name="+5V" class="1">
 <segment>
 <wire x1="299.72" y1="157.48" x2="299.72" y2="154.94" width="0.1524" layer="91"/>
 <wire x1="299.72" y1="154.94" x2="287.02" y2="154.94" width="0.1524" layer="91"/>
@@ -30306,7 +30306,7 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <pinref part="J1" gate="G$1" pin="5"/>
 </segment>
 </net>
-<net name="+3V3" class="0">
+<net name="+3V3" class="1">
 <segment>
 <wire x1="342.9" y1="99.06" x2="342.9" y2="111.76" width="0.1524" layer="91"/>
 <pinref part="+3V1" gate="G$1" pin="+3V3"/>
