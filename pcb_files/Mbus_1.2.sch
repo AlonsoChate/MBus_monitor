@@ -28997,7 +28997,7 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 </variantdefs>
 <classes>
 <class number="0" name="default" width="0.2032" drill="0.3048">
-<clearance class="0" value="0.254"/>
+<clearance class="0" value="0.2032"/>
 </class>
 <class number="1" name="power" width="0.8128" drill="0.8636">
 <clearance class="1" value="0.254"/>

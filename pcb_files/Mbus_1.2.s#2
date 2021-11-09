@@ -28996,16 +28996,16 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <variantdefs>
 </variantdefs>
 <classes>
-<class number="0" name="default" width="0.2032" drill="0.4064">
-<clearance class="0" value="0.2032"/>
+<class number="0" name="default" width="0.2032" drill="0.3048">
+<clearance class="0" value="0.254"/>
 </class>
-<class number="1" name="power" width="0.8128" drill="0.8128">
+<class number="1" name="power" width="0.8128" drill="0.8636">
 <clearance class="1" value="0.254"/>
 </class>
-<class number="2" name="gnd" width="0.6096" drill="0.6096">
+<class number="2" name="gnd" width="0.6096" drill="0.6604">
 <clearance class="2" value="0.254"/>
 </class>
-<class number="3" name="power usb" width="0.8128" drill="0.8128">
+<class number="3" name="power usb" width="0.8128" drill="0.8636">
 <clearance class="3" value="0.254"/>
 </class>
 </classes>
@@ -29463,7 +29463,7 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <busses>
 </busses>
 <nets>
-<net name="+5V" class="3">
+<net name="+5V" class="1">
 <segment>
 <wire x1="299.72" y1="157.48" x2="299.72" y2="154.94" width="0.1524" layer="91"/>
 <wire x1="299.72" y1="154.94" x2="287.02" y2="154.94" width="0.1524" layer="91"/>
@@ -30130,15 +30130,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <label x="177.8" y="30.48" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="Q1" gate="G$1" pin="S"/>
-<wire x1="340.36" y1="93.98" x2="332.74" y2="93.98" width="0.1524" layer="91"/>
-<pinref part="R3" gate="G$1" pin="1"/>
-<wire x1="332.74" y1="93.98" x2="302.26" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="332.74" y1="96.52" x2="332.74" y2="93.98" width="0.1524" layer="91"/>
-<junction x="332.74" y="93.98"/>
-<pinref part="PIHEADER" gate="G$1" pin="TXO/GP14"/>
-</segment>
-<segment>
 <wire x1="350.52" y1="66.04" x2="360.68" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="360.68" y1="66.04" x2="370.84" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="370.84" y1="66.04" x2="370.84" y2="91.44" width="0.1524" layer="91"/>
@@ -30155,17 +30146,6 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <pinref part="IC3" gate="1" pin="(RXD0/PCIN8)PE0"/>
 <wire x1="175.26" y1="27.94" x2="182.88" y2="27.94" width="0.1524" layer="91"/>
 <label x="177.8" y="27.94" size="1.778" layer="95"/>
-</segment>
-<segment>
-<wire x1="322.58" y1="91.44" x2="322.58" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="322.58" y1="66.04" x2="332.74" y2="66.04" width="0.1524" layer="91"/>
-<pinref part="Q3" gate="G$1" pin="S"/>
-<pinref part="R15" gate="G$1" pin="1"/>
-<wire x1="332.74" y1="66.04" x2="340.36" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="332.74" y1="68.58" x2="332.74" y2="66.04" width="0.1524" layer="91"/>
-<junction x="332.74" y="66.04"/>
-<pinref part="PIHEADER" gate="G$1" pin="RXI/GP15"/>
-<wire x1="302.26" y1="91.44" x2="322.58" y2="91.44" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="Q1" gate="G$1" pin="D"/>
@@ -30306,7 +30286,7 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <pinref part="J1" gate="G$1" pin="5"/>
 </segment>
 </net>
-<net name="+3V3" class="0">
+<net name="+3V3" class="1">
 <segment>
 <wire x1="342.9" y1="99.06" x2="342.9" y2="111.76" width="0.1524" layer="91"/>
 <pinref part="+3V1" gate="G$1" pin="+3V3"/>
@@ -30379,6 +30359,30 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <wire x1="86.36" y1="30.48" x2="86.36" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="T1" gate="G1" pin="B"/>
 <wire x1="71.12" y1="45.72" x2="76.2" y2="45.72" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$5" class="0">
+<segment>
+<pinref part="Q1" gate="G$1" pin="S"/>
+<pinref part="PIHEADER" gate="G$1" pin="TXO/GP14"/>
+<wire x1="340.36" y1="93.98" x2="332.74" y2="93.98" width="0.1524" layer="91"/>
+<pinref part="R3" gate="G$1" pin="1"/>
+<wire x1="332.74" y1="93.98" x2="302.26" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="332.74" y1="96.52" x2="332.74" y2="93.98" width="0.1524" layer="91"/>
+<junction x="332.74" y="93.98"/>
+</segment>
+</net>
+<net name="N$12" class="0">
+<segment>
+<pinref part="Q3" gate="G$1" pin="S"/>
+<wire x1="340.36" y1="66.04" x2="332.74" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="332.74" y1="66.04" x2="322.58" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="322.58" y1="66.04" x2="322.58" y2="91.44" width="0.1524" layer="91"/>
+<pinref part="PIHEADER" gate="G$1" pin="RXI/GP15"/>
+<wire x1="322.58" y1="91.44" x2="302.26" y2="91.44" width="0.1524" layer="91"/>
+<pinref part="R15" gate="G$1" pin="1"/>
+<wire x1="332.74" y1="68.58" x2="332.74" y2="66.04" width="0.1524" layer="91"/>
+<junction x="332.74" y="66.04"/>
 </segment>
 </net>
 </nets>
