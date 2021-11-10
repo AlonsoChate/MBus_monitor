@@ -39,7 +39,7 @@
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
@@ -175,10 +175,13 @@
 </layers>
 <board>
 <plain>
-<wire x1="0" y1="0" x2="101.6" y2="0" width="0" layer="20"/>
-<wire x1="101.6" y1="0" x2="101.6" y2="71.12" width="0" layer="20"/>
-<wire x1="101.6" y1="71.12" x2="0" y2="71.12" width="0" layer="20"/>
-<wire x1="0" y1="71.12" x2="0" y2="0" width="0" layer="20"/>
+<wire x1="0" y1="0" x2="109.22" y2="0" width="0" layer="20"/>
+<wire x1="109.22" y1="0" x2="109.22" y2="76.2" width="0" layer="20"/>
+<wire x1="109.22" y1="76.2" x2="0" y2="76.2" width="0" layer="20"/>
+<wire x1="0" y1="76.2" x2="0" y2="0" width="0" layer="20"/>
+<hole x="5.25018125" y="66.159378125" drill="5.08"/>
+<hole x="104.609903125" y="3.312159375" drill="5.08"/>
+<hole x="104.902" y="71.882" drill="5.08"/>
 </plain>
 <libraries>
 <library name="microbuilder">
@@ -3002,8 +3005,7 @@ design rules under a new name.</description>
 <vertex x="-5.588" y="74.676"/>
 <vertex x="-5.588" y="-6.096"/>
 <vertex x="105.41" y="-6.096"/>
-<vertex x="105.918" y="-5.588"/>
-<vertex x="105.918" y="75.184"/>
+<vertex x="106.172" y="-5.334"/>
 <vertex x="106.172" y="75.438"/>
 <vertex x="-4.826" y="75.438"/>
 </polygon>

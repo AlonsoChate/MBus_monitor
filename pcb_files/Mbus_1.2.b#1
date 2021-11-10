@@ -175,13 +175,13 @@
 </layers>
 <board>
 <plain>
-<wire x1="0" y1="0" x2="114.3" y2="0" width="0" layer="20"/>
-<wire x1="114.3" y1="0" x2="114.3" y2="78.74" width="0" layer="20"/>
-<wire x1="114.3" y1="78.74" x2="0" y2="78.74" width="0" layer="20"/>
+<wire x1="0" y1="0" x2="113.03" y2="0" width="0" layer="20"/>
+<wire x1="113.03" y1="0" x2="113.03" y2="78.74" width="0" layer="20"/>
+<wire x1="113.03" y1="78.74" x2="0" y2="78.74" width="0" layer="20"/>
 <wire x1="0" y1="78.74" x2="0" y2="0" width="0" layer="20"/>
 <hole x="3.81" y="74.168" drill="5.08"/>
-<hole x="109.227621875" y="5.68451875" drill="5.08"/>
-<hole x="110.12931875" y="74.254359375" drill="5.08"/>
+<hole x="109.22" y="4.572" drill="5.08"/>
+<hole x="109.22" y="74.168" drill="5.08"/>
 <hole x="3.81" y="4.572" drill="5.08"/>
 </plain>
 <libraries>
