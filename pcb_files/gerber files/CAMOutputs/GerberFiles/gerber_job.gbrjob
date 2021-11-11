@@ -1,7 +1,7 @@
 {
     "Header": {
         "Comment": "All values are metric (mm)",
-        "CreationDate": "2021-11-09T20:47:57Z",
+        "CreationDate": "2021-11-11T23:05:07Z",
         "GenerationSoftware": {
             "Application": "EAGLE",
             "Vendor": "Autodesk",
@@ -13,9 +13,9 @@
         "BoardThickness": 1.57,
         "LayerNumber": 2,
         "Name": {
-            "ProjectId": "Mbus_1.2"
+            "ProjectId": "Mbus_2.0"
         },
-        "Owner": "  <>",
+        "Owner": "yiteng cai <alonsoch@umich.edu>",
         "Size": {
             "X": 113.03,
             "Y": 78.74
