@@ -31108,11 +31108,11 @@ Source: www.ecsxtal.com .. Crystal 3.6864MHz CSM_7X_DU.PDF</description>
 <part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="R16" library="SmartPrj" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="R17" library="SmartPrj" deviceset="R-EU_" device="R0603" value="1k"/>
-<part name="P+15" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device=""/>
 <part name="GND12" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="T1" library="transistor" library_urn="urn:adsk.eagle:library:402" deviceset="2N3904" device="" package3d_urn="urn:adsk.eagle:package:28523/2"/>
 <part name="C7" library="rcl" deviceset="C-US" device="C0805"/>
 <part name="POWER" library="pinhead" library_urn="urn:adsk.eagle:library:325" deviceset="PINHD-1X3" device="" package3d_urn="urn:adsk.eagle:package:22458/2"/>
+<part name="+3V6" library="supply1" deviceset="+3V3" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -31409,9 +31409,6 @@ Source: www.ecsxtal.com .. Crystal 3.6864MHz CSM_7X_DU.PDF</description>
 <attribute name="NAME" x="91.44" y="97.3836" size="1.778" layer="95"/>
 <attribute name="VALUE" x="98.425" y="97.028" size="1.778" layer="96"/>
 </instance>
-<instance part="P+15" gate="1" x="88.9" y="104.14" smashed="yes">
-<attribute name="VALUE" x="86.36" y="99.06" size="1.778" layer="96" rot="R90"/>
-</instance>
 <instance part="GND12" gate="1" x="101.6" y="78.74" smashed="yes">
 <attribute name="VALUE" x="99.06" y="76.2" size="1.778" layer="96"/>
 </instance>
@@ -31426,6 +31423,9 @@ Source: www.ecsxtal.com .. Crystal 3.6864MHz CSM_7X_DU.PDF</description>
 <instance part="POWER" gate="A" x="20.32" y="58.42" smashed="yes">
 <attribute name="NAME" x="13.97" y="64.135" size="1.778" layer="95"/>
 <attribute name="VALUE" x="13.97" y="50.8" size="1.778" layer="96"/>
+</instance>
+<instance part="+3V6" gate="G$1" x="88.9" y="109.22" smashed="yes">
+<attribute name="VALUE" x="86.36" y="104.14" size="1.778" layer="96" rot="R90"/>
 </instance>
 </instances>
 <busses>
@@ -31528,10 +31528,6 @@ Source: www.ecsxtal.com .. Crystal 3.6864MHz CSM_7X_DU.PDF</description>
 <wire x1="35.56" y1="43.18" x2="35.56" y2="40.64" width="0.1524" layer="91"/>
 <pinref part="R1" gate="G$1" pin="2"/>
 <pinref part="P+2" gate="1" pin="+5V"/>
-</segment>
-<segment>
-<pinref part="R17" gate="G$1" pin="2"/>
-<pinref part="P+15" gate="1" pin="+5V"/>
 </segment>
 <segment>
 <pinref part="POWER" gate="A" pin="2"/>
@@ -31823,6 +31819,11 @@ Source: www.ecsxtal.com .. Crystal 3.6864MHz CSM_7X_DU.PDF</description>
 <wire x1="175.26" y1="101.6" x2="182.88" y2="101.6" width="0.1524" layer="91"/>
 <label x="177.8" y="101.6" size="1.778" layer="95"/>
 </segment>
+<segment>
+<wire x1="195.58" y1="40.64" x2="182.88" y2="40.64" width="0.1524" layer="91"/>
+<label x="185.42" y="40.64" size="1.778" layer="95"/>
+<pinref part="J1" gate="G$1" pin="5"/>
+</segment>
 </net>
 <net name="PC2" class="0">
 <segment>
@@ -31987,6 +31988,11 @@ Source: www.ecsxtal.com .. Crystal 3.6864MHz CSM_7X_DU.PDF</description>
 <wire x1="254" y1="124.46" x2="271.78" y2="124.46" width="0.1524" layer="91"/>
 <wire x1="271.78" y1="124.46" x2="271.78" y2="127" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="+3V6" gate="G$1" pin="+3V3"/>
+<pinref part="R17" gate="G$1" pin="2"/>
+<wire x1="88.9" y1="106.68" x2="88.9" y2="101.6" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="MISO" class="0">
 <segment>
@@ -32147,13 +32153,6 @@ Source: www.ecsxtal.com .. Crystal 3.6864MHz CSM_7X_DU.PDF</description>
 <wire x1="124.46" y1="68.58" x2="119.38" y2="68.58" width="0.1524" layer="91"/>
 <junction x="124.46" y="68.58"/>
 <pinref part="C7" gate="G$1" pin="2"/>
-</segment>
-</net>
-<net name="PC5" class="0">
-<segment>
-<wire x1="195.58" y1="40.64" x2="182.88" y2="40.64" width="0.1524" layer="91"/>
-<label x="185.42" y="40.64" size="1.778" layer="95"/>
-<pinref part="J1" gate="G$1" pin="5"/>
 </segment>
 </net>
 <net name="N$14" class="0">

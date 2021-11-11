@@ -31823,6 +31823,11 @@ Source: www.ecsxtal.com .. Crystal 3.6864MHz CSM_7X_DU.PDF</description>
 <wire x1="175.26" y1="101.6" x2="182.88" y2="101.6" width="0.1524" layer="91"/>
 <label x="177.8" y="101.6" size="1.778" layer="95"/>
 </segment>
+<segment>
+<wire x1="195.58" y1="40.64" x2="182.88" y2="40.64" width="0.1524" layer="91"/>
+<label x="185.42" y="40.64" size="1.778" layer="95"/>
+<pinref part="J1" gate="G$1" pin="5"/>
+</segment>
 </net>
 <net name="PC2" class="0">
 <segment>
@@ -32147,13 +32152,6 @@ Source: www.ecsxtal.com .. Crystal 3.6864MHz CSM_7X_DU.PDF</description>
 <wire x1="124.46" y1="68.58" x2="119.38" y2="68.58" width="0.1524" layer="91"/>
 <junction x="124.46" y="68.58"/>
 <pinref part="C7" gate="G$1" pin="2"/>
-</segment>
-</net>
-<net name="PC5" class="0">
-<segment>
-<wire x1="195.58" y1="40.64" x2="182.88" y2="40.64" width="0.1524" layer="91"/>
-<label x="185.42" y="40.64" size="1.778" layer="95"/>
-<pinref part="J1" gate="G$1" pin="5"/>
 </segment>
 </net>
 <net name="N$14" class="0">
