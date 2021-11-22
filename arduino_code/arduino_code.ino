@@ -1,25 +1,43 @@
 #include <LiquidCrystal.h>
+#include <SoftwareSerial.h>
+#include <Wire.h>
 #include "Adafruit_FONA.h"
+#include "RTClib.h"
 
-// lcd init
+/*-----------------------------------------------------------*/
+
+
+/*-----------------------------------------------------------*/
+/* Global variables used for RPi slave */
+char msg[15];            // Command reg
+int RPi_slave = 9;       // RPi I2C slave address
+char count[15] = "N/A";  // People count reg
+
+/*-----------------------------------------------------------*/
+/* Global variables used for RTC */
+RTC_PCF8523 rtc;               // RTC object
+char timeStamp[16] = "N/A";    // Format: 2021/11/22/14/04
+char timeDisplay[16] = "N/A";  // Format: 2021/11/22 14:04
+
+/*-----------------------------------------------------------*/
+/* Global variables used for LCD */
 const int rs = 12, en = 11, d4 = 5, d5 = 6, d6 = 7, d7 = 8;
-LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);  // LCD object
 
-// gsm part
+/*-----------------------------------------------------------*/
+/* GSM setting */
 #define FONA_RX 2
 #define FONA_TX 3
 #define FONA_RST 4
+int GPRS_enabled = 0;
 
-char replybuffer[255];
-
-#include <SoftwareSerial.h>
 SoftwareSerial fonaSS = SoftwareSerial(FONA_TX, FONA_RX);
 SoftwareSerial* fonaSerial = &fonaSS;
-
 Adafruit_FONA_3G fona = Adafruit_FONA_3G(FONA_RST);
-char imei[16] = {0};  // MUST use a 16 character buffer for IMEI!
 
-// print long sentence on lcd screen, delay 2s each screen
+/*-----------------------------------------------------------*/
+/* print long sentence on lcd screen, delay 2s each screen */
+/* only used in setup  */
 void printLong(char* data) {
     int lines = ceil((double)strlen(data) / 16.0);
     char line[16];
@@ -33,6 +51,7 @@ void printLong(char* data) {
             delay(2000);
     }
 }
+
 
 uint16_t readBatteryPercent() {
     // read the battery voltage
@@ -54,96 +73,30 @@ uint16_t readBatteryPercent() {
     }
 }
 
-void readRSSI() {
-    // read the RSSI
-    uint8_t n = fona.getRSSI();
-    int8_t r;
 
-    Serial.print(F("RSSI = "));
-    Serial.print(n);
-    Serial.print(": ");
-    if (n == 0)
-        r = -115;
-    if (n == 1)
-        r = -111;
-    if (n == 31)
-        r = -52;
-    if ((n >= 2) && (n <= 30)) {
-        r = map(n, 2, 30, -110, -54);
+int turnGPRS() {
+    lcd.clear();
+    if(!check_network()){
+        GPRS_enabled = 0;
+        printLong("Failed to enable GPRS, please retry");
+        delay(1000);
+        return 0;
     }
-    Serial.print(r);
-    Serial.println(F(" dBm"));
-}
-
-void readNetworkStat() {
-    // read the network/cellular status
-    uint8_t n = fona.getNetworkStatus();
-    Serial.print(F("Network status "));
-    Serial.print(n);
-    Serial.print(F(": "));
-    if (n == 0)
-        Serial.println(F("Not registered"));
-    if (n == 1)
-        Serial.println(F("Registered (home)"));
-    if (n == 2)
-        Serial.println(F("Not registered (searching)"));
-    if (n == 3)
-        Serial.println(F("Denied"));
-    if (n == 4)
-        Serial.println(F("Unknown"));
-    if (n == 5)
-        Serial.println(F("Registered roaming"));
-}
-
-void turnGPRS() {
     // try to turn off first
     fona.enableGPRS(false);
     if (fona.enableGPRS(true)) {
+        GPRS_enabled = 1;
         printLong("GPRS Enabled");
     } else {
+        GPRS_enabled = 0;
         printLong("Failed to enable GPRS, please retry");
     }
     delay(1000);
+    return 1;
 }
 
-void postData() {
-    // Post data to website via 3G
-    float temperature = 12;  // Change this to suit your needs
-    uint16_t battLevel =
-        45;  // Just for testing. Use the read battery function instead
 
-    // Construct URL and post the data to the web API
-    // Create char buffers for the floating point numbers for sprintf
-    char URL[150];  // Make sure this buffer is long enough for your
-                    // request URL
-    char tempBuff[16];
-    char battLevelBuff[16];
-
-    // Format the floating point numbers as needed
-    dtostrf(temperature, 1, 2,
-            tempBuff);  // float_val, min_width, digits_after_decimal,
-                        // char_buffer
-    dtostrf(battLevel, 1, 0, battLevelBuff);
-
-    // Use IMEI as device ID in this example:
-    sprintf(URL,
-            "GET /dweet/for/gsm_mod?people_count=%s&battery_percent=%s "
-            "HTTP/1.1\r\nHost: dweet.io\r\nContent-Length: 10\r\n\r\n",
-            tempBuff, battLevelBuff);
-
-    if (!fona.postData3G(URL))  // Uncomment this if you have FONA 3G!
-        Serial.println(F("Failed to post data to website..."));
-}
-
-void setup() {
-    // set up the LCD's number of columns and rows:
-    lcd.begin(16, 2);
-
-    Serial.begin(115200);
-    lcd.clear();
-    lcd.print("Initializing....");
-    delay(500);
-
+void GSM_init(){
     fonaSerial->begin(4800);
     while (!fona.begin(*fonaSerial)) {
         lcd.clear();
@@ -154,9 +107,7 @@ void setup() {
     uint8_t type = fona.type();
     lcd.clear();
     lcd.print("FONA is OK");
-    delay(1000);
-    lcd.clear();
-
+    lcd.setCursor(0, 1);
     switch (type) {
         case FONA3G_A:
             lcd.print("FONA 3G American");
@@ -165,14 +116,7 @@ void setup() {
             lcd.print("???");
             break;
     }
-
-    // Print module IMEI number.
-    uint8_t imeiLen = fona.getIMEI(imei);
-    if (imeiLen > 0) {
-        lcd.setCursor(0, 1);
-        lcd.print(imei);
-        delay(2000);
-    }
+    delay(1000);
 
     fona.setGPRSNetworkSettings(F("wireless.dish.com"));
 
@@ -181,22 +125,140 @@ void setup() {
     // the following line then redirects over SSL will be followed.
     // fona.setHTTPSRedirect(true);
 
-    // enable GPRS
-    //turnGPRS();
+    // try to enable GPRS
+    turnGPRS();
 }
 
-void loop() {
+
+int postData() {
+    // Post data to website via 3G
+    // Construct URL and post the data to the web API
+    // Create char buffers for the floating point numbers for sprintf
+    char URL[150];  // Make sure this buffer is long enough for your
+                    // request URL
+
+    // Use IMEI as device ID in this example:
+    sprintf(URL,
+            "GET /dweet/for/gsm_mod?people_count=%s&timeStamp=%s "
+            "HTTP/1.1\r\nHost: dweet.io\r\nContent-Length: 10\r\n\r\n",
+            count, timeStamp);
+
+    return fona.postData3G(URL);
+}
+
+
+void Send_Count() {
+    // send count request to raspberry pi
+    sprintf(msg, "count\n");
+    Wire.beginTransmission(RPi_slave);
+    Wire.write(msg);
+    Wire.endTransmission();
+
+    printLong("Send request to pi!");
+    delay(1000);
+
+    // request timeStamp from rtc
+    DateTime now = rtc.now();
+    sprintf(timeStamp, "%d/%d/%d/%d/%d", now.year(), now.month(), now.day(),
+            now.hour(), now.minute());
+    sprintf(timeDisplay, "%d/%d/%d %d:%d", now.year(), now.month(), now.day(),
+            now.hour(), now.minute());
+    delay(4000);
+
+    printLong("Read count number!");
+    delay(1000);
+
+    // read count number, stored in "count"
+    Read_Count();
+
+    // display people count and timestamp
     lcd.clear();
-    lcd.print(readBatteryPercent());
-    delay(2000);
+    lcd.print("#People " + String(count));
+    lcd.setCursor(0, 1);
+    lcd.print(String(timeDisplay));
+    delay(4000);
+}
 
-    // get current timestamp from rtc
 
-    // send request to pi to count people
+int check_network() {
+    // read the network/cellular status
+    uint8_t n = fona.getNetworkStatus();
+    if (n == 1){
+        // registered
+        return 1;
+    }
+    return 0;
+}
 
-    // pack data
 
-    // send data through gsm
+void Read_Count() {
+    Wire.requestFrom(RPi_slave, 2);
+    char reg[15] = "";  // number register
+    int idx = 0;
+    while (Wire.available()) {
+        char c = Wire.read();
+        reg[idx++] = c;
+        Serial.print(c);
+    }
+    strcpy(count, reg);  // copy number register to global 'count'
+}
 
-    // store data in sd card
+
+void setup() {
+    // set up the LCD's number of columns and rows:
+    lcd.begin(16, 2);
+    lcd.clear();
+    lcd.print("Initializing....");
+    delay(500);
+
+    /* RPi Slave Init*/
+    Wire.begin();
+    Wire.requestFrom(RPi_slave,
+                     2);  // Dump unreaded data on I2C line, necessary!
+    while (Wire.available()) {
+        char c = Wire.read();
+    }
+    lcd.clear();
+    printLong("Raspberry Pi initialized!");
+    delay(500);
+
+    /* RTC Init*/
+    rtc.begin();
+    if (!rtc.initialized() || rtc.lostPower()) {
+        Serial.println("RTC is NOT initialized, let's set the time!");
+        rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+    }
+    rtc.start();
+    lcd.clear();
+    printLong("RTC initialized!");
+    delay(500);
+
+    /* GSM Init*/
+    lcd.clear();
+    printLong("Initializing FONA...");
+    delay(500);
+
+    GSM_init();
+
+    lcd.clear();
+    printLong("Finish initialization!");
+    delay(500);
+}
+
+
+void loop() {
+    Send_Count();
+
+    if(!GPRS_enabled)
+        turnGPRS();
+        
+    if (check_network() && postData()) {
+        lcd.clear();
+        printLong("Transmitted successfully!");
+        delay(1000);
+    }else{
+        lcd.clear();
+        printLong("Failed to transmit!");
+        delay(1000);
+    }
 }
