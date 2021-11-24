@@ -19,14 +19,14 @@ char timeDisplay[17] = "N/A";  // Format: 2021/11/22 14:04
 
 /*-----------------------------------------------------------*/
 /* Global variables used for LCD */
-const int rs = 12, en = 11, d4 = 5, d5 = 6, d6 = 7, d7 = 8;
+const int rs = 9, en = 8, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);  // LCD object
 
 /*-----------------------------------------------------------*/
 /* GSM setting */
-#define FONA_RX 2
-#define FONA_TX 3
-#define FONA_RST 4
+#define FONA_RX 1
+#define FONA_TX 0
+#define FONA_RST 15
 int GPRS_enabled = 0;
 
 SoftwareSerial fonaSS = SoftwareSerial(FONA_TX, FONA_RX);
