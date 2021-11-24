@@ -6,29 +6,27 @@
 
 /*-----------------------------------------------------------*/
 
-
 /*-----------------------------------------------------------*/
 /* Global variables used for RPi slave */
-char msg[15];            // Command reg
 int RPi_slave = 9;       // RPi I2C slave address
 char count[15] = "N/A";  // People count reg
 
 /*-----------------------------------------------------------*/
 /* Global variables used for RTC */
 RTC_PCF8523 rtc;               // RTC object
-char timeStamp[16] = "N/A";    // Format: 2021/11/22/14/04
-char timeDisplay[16] = "N/A";  // Format: 2021/11/22 14:04
+char timeStamp[17] = "N/A";    // Format: 2021/11/22/14/04
+char timeDisplay[17] = "N/A";  // Format: 2021/11/22 14:04
 
 /*-----------------------------------------------------------*/
 /* Global variables used for LCD */
-const int rs = 12, en = 11, d4 = 5, d5 = 6, d6 = 7, d7 = 8;
+const int rs = 9, en = 8, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);  // LCD object
 
 /*-----------------------------------------------------------*/
 /* GSM setting */
-#define FONA_RX 2
-#define FONA_TX 3
-#define FONA_RST 4
+#define FONA_RX 1
+#define FONA_TX 0
+#define FONA_RST 15
 int GPRS_enabled = 0;
 
 SoftwareSerial fonaSS = SoftwareSerial(FONA_TX, FONA_RX);
@@ -38,13 +36,13 @@ Adafruit_FONA_3G fona = Adafruit_FONA_3G(FONA_RST);
 /*-----------------------------------------------------------*/
 /* print long sentence on lcd screen, delay 2s each screen */
 /* only used in setup  */
-void printLong(char* data) {
-    int lines = ceil((double)strlen(data) / 16.0);
+void printLong(String data) {
+    int lines = ceil((double)data.length() / 16.0);
     char line[16];
     for (int i = 0; i < lines; i++) {
         if (i % 2 == 0)
             lcd.clear();
-        strncpy(line, data + i * 16, 16);
+        strncpy(line, data.c_str() + i * 16, 16);
         lcd.setCursor(0, i % 2);
         lcd.print(line);
         if (i % 2 == 1)
@@ -52,19 +50,9 @@ void printLong(char* data) {
     }
 }
 
-
 uint16_t readBatteryPercent() {
-    // read the battery voltage
     uint16_t vbat;
-    // if (!fona.getBattVoltage(&vbat)) {
-    //     Serial.println(F("Failed to read Batt"));
-    // } else {
-    //     Serial.print(F("VBat = "));
-    //     Serial.print(vbat);
-    //     Serial.println(F(" mV"));
-    // }
 
-    // read battery percentage
     if (!fona.getBattPercent(&vbat)) {
         printLong("Failed to read Batt");
         return 0;
@@ -73,12 +61,11 @@ uint16_t readBatteryPercent() {
     }
 }
 
-
 int turnGPRS() {
     lcd.clear();
-    if(!check_network()){
+    if (!check_network()) {
         GPRS_enabled = 0;
-        printLong("Failed to enable GPRS, please retry");
+        printLong("Failed to enable GPRS, please retry!");
         delay(1000);
         return 0;
     }
@@ -86,21 +73,20 @@ int turnGPRS() {
     fona.enableGPRS(false);
     if (fona.enableGPRS(true)) {
         GPRS_enabled = 1;
-        printLong("GPRS Enabled");
+        printLong("GPRS Enabled!");
     } else {
         GPRS_enabled = 0;
-        printLong("Failed to enable GPRS, please retry");
+        printLong("Failed to enable GPRS, please retry!");
     }
     delay(1000);
     return 1;
 }
 
-
-void GSM_init(){
+void GSM_init() {
     fonaSerial->begin(4800);
     while (!fona.begin(*fonaSerial)) {
         lcd.clear();
-        printLong("Couldn't find FONA, retry in 2s");
+        printLong("Couldn't find FONA, retry in 2s!\0");
         fonaSerial->begin(4800);
     }
 
@@ -129,41 +115,42 @@ void GSM_init(){
     turnGPRS();
 }
 
-
 int postData() {
     // Post data to website via 3G
     // Construct URL and post the data to the web API
     // Create char buffers for the floating point numbers for sprintf
-    char URL[150];  // Make sure this buffer is long enough for your
-                    // request URL
+    char URL[150] = "";  // Make sure this buffer is long enough for your
+                         // request URL
 
     // Use IMEI as device ID in this example:
     sprintf(URL,
             "GET /dweet/for/gsm_mod?people_count=%s&timeStamp=%s "
             "HTTP/1.1\r\nHost: dweet.io\r\nContent-Length: 10\r\n\r\n",
             count, timeStamp);
-
     return fona.postData3G(URL);
 }
 
-
 void Send_Count() {
     // send count request to raspberry pi
+    char msg[15];
     sprintf(msg, "count\n");
     Wire.beginTransmission(RPi_slave);
     Wire.write(msg);
     Wire.endTransmission();
 
-    printLong("Send request to pi!");
+    // printLong("Send request to pi!");
     delay(1000);
 
     // request timeStamp from rtc
     DateTime now = rtc.now();
-    sprintf(timeStamp, "%d/%d/%d/%d/%d", now.year(), now.month(), now.day(),
-            now.hour(), now.minute());
-    sprintf(timeDisplay, "%d/%d/%d %d:%d", now.year(), now.month(), now.day(),
-            now.hour(), now.minute());
-    delay(4000);
+    uint16_t year = now.year();
+    uint8_t month = now.month();
+    uint8_t day = now.day();
+    uint8_t hour = now.hour();
+    uint8_t minute = now.minute();
+
+    sprintf(timeStamp, "%d/%d/%d/%d/%d\0", year, month, day, hour, minute);
+    sprintf(timeDisplay, "%d/%d/%d %d:%d\0", year, month, day, hour, minute);
 
     printLong("Read count number!");
     delay(1000);
@@ -179,30 +166,26 @@ void Send_Count() {
     delay(4000);
 }
 
-
 int check_network() {
     // read the network/cellular status
     uint8_t n = fona.getNetworkStatus();
-    if (n == 1){
+    if (n == 1) {
         // registered
         return 1;
     }
     return 0;
 }
 
-
 void Read_Count() {
     Wire.requestFrom(RPi_slave, 2);
-    char reg[15] = "";  // number register
     int idx = 0;
     while (Wire.available()) {
         char c = Wire.read();
-        reg[idx++] = c;
+        count[idx++] = c;
         Serial.print(c);
     }
-    strcpy(count, reg);  // copy number register to global 'count'
+    count[idx] = '\0';
 }
-
 
 void setup() {
     // set up the LCD's number of columns and rows:
@@ -245,18 +228,17 @@ void setup() {
     delay(500);
 }
 
-
 void loop() {
     Send_Count();
 
-    if(!GPRS_enabled)
+    if (!GPRS_enabled)
         turnGPRS();
-        
+
     if (check_network() && postData()) {
         lcd.clear();
         printLong("Transmitted successfully!");
         delay(1000);
-    }else{
+    } else {
         lcd.clear();
         printLong("Failed to transmit!");
         delay(1000);
