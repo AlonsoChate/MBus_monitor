@@ -1,5 +1,4 @@
 #include <LiquidCrystal.h>
-#include <SoftwareSerial.h>
 #include <Wire.h>
 #include "Adafruit_FONA.h"
 #include "RTClib.h"
@@ -24,13 +23,10 @@ LiquidCrystal lcd(rs, en, d4, d5, d6, d7);  // LCD object
 
 /*-----------------------------------------------------------*/
 /* GSM setting */
-#define FONA_RX 1
-#define FONA_TX 0
 #define FONA_RST 15
 int GPRS_enabled = 0;
 
-SoftwareSerial fonaSS = SoftwareSerial(FONA_TX, FONA_RX);
-SoftwareSerial* fonaSerial = &fonaSS;
+HardwareSerial* fonaSerial = &Serial;
 Adafruit_FONA_3G fona = Adafruit_FONA_3G(FONA_RST);
 
 /*-----------------------------------------------------------*/
@@ -45,7 +41,7 @@ void printLong(String data) {
         strncpy(line, data.c_str() + i * 16, 16);
         lcd.setCursor(0, i % 2);
         lcd.print(line);
-        if (i % 2 == 1)
+        if (i % 2 == 1 || i == lines - 1)
             delay(2000);
     }
 }
@@ -62,11 +58,9 @@ uint16_t readBatteryPercent() {
 }
 
 int turnGPRS() {
-    lcd.clear();
     if (!check_network()) {
         GPRS_enabled = 0;
         printLong("Failed to enable GPRS, please retry!");
-        delay(1000);
         return 0;
     }
     // try to turn off first
@@ -78,14 +72,12 @@ int turnGPRS() {
         GPRS_enabled = 0;
         printLong("Failed to enable GPRS, please retry!");
     }
-    delay(1000);
     return 1;
 }
 
 void GSM_init() {
     fonaSerial->begin(4800);
     while (!fona.begin(*fonaSerial)) {
-        lcd.clear();
         printLong("Couldn't find FONA, retry in 2s!\0");
         fonaSerial->begin(4800);
     }
@@ -130,6 +122,16 @@ int postData() {
     return fona.postData3G(URL);
 }
 
+int check_network() {
+    // read the network/cellular status
+    uint8_t n = fona.getNetworkStatus();
+    if (n == 1) {
+        // registered
+        return 1;
+    }
+    return 0;
+}
+
 void Send_Count() {
     // send count request to raspberry pi
     char msg[15];
@@ -138,9 +140,10 @@ void Send_Count() {
     Wire.write(msg);
     Wire.endTransmission();
 
-    // printLong("Send request to pi!");
-    delay(1000);
+    printLong("Send request to pi!");
+}
 
+void read_time(){
     // request timeStamp from rtc
     DateTime now = rtc.now();
     uint16_t year = now.year();
@@ -153,27 +156,6 @@ void Send_Count() {
     sprintf(timeDisplay, "%d/%d/%d %d:%d\0", year, month, day, hour, minute);
 
     printLong("Read count number!");
-    delay(1000);
-
-    // read count number, stored in "count"
-    Read_Count();
-
-    // display people count and timestamp
-    lcd.clear();
-    lcd.print("#People " + String(count));
-    lcd.setCursor(0, 1);
-    lcd.print(String(timeDisplay));
-    delay(4000);
-}
-
-int check_network() {
-    // read the network/cellular status
-    uint8_t n = fona.getNetworkStatus();
-    if (n == 1) {
-        // registered
-        return 1;
-    }
-    return 0;
 }
 
 void Read_Count() {
@@ -185,6 +167,30 @@ void Read_Count() {
         Serial.print(c);
     }
     count[idx] = '\0';
+}
+
+void function_to_call(){
+    Send_Count();
+
+    read_time();
+
+    Read_Count();
+
+    // display people count and timestamp
+    lcd.clear();
+    lcd.print("#People " + String(count));
+    lcd.setCursor(0, 1);
+    lcd.print(String(timeDisplay));
+    delay(4000);
+
+    if (!GPRS_enabled)
+        turnGPRS();
+
+    if (check_network() && postData()) {
+        printLong("Transmitted successfully!");
+    } else {
+        printLong("Failed to transmit!");
+    }
 }
 
 void setup() {
@@ -201,9 +207,7 @@ void setup() {
     while (Wire.available()) {
         char c = Wire.read();
     }
-    lcd.clear();
     printLong("Raspberry Pi initialized!");
-    delay(500);
 
     /* RTC Init*/
     rtc.begin();
@@ -212,35 +216,17 @@ void setup() {
         rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
     }
     rtc.start();
-    lcd.clear();
     printLong("RTC initialized!");
-    delay(500);
 
     /* GSM Init*/
-    lcd.clear();
     printLong("Initializing FONA...");
-    delay(500);
 
     GSM_init();
 
-    lcd.clear();
     printLong("Finish initialization!");
-    delay(500);
 }
 
 void loop() {
-    Send_Count();
+    function_to_call();
 
-    if (!GPRS_enabled)
-        turnGPRS();
-
-    if (check_network() && postData()) {
-        lcd.clear();
-        printLong("Transmitted successfully!");
-        delay(1000);
-    } else {
-        lcd.clear();
-        printLong("Failed to transmit!");
-        delay(1000);
-    }
 }
