@@ -83,6 +83,7 @@ int turnGPRS() {
     return 1;
 }
 
+// gsm initialization
 void GSM_init() {
     fonaSerial->begin(4800);
     while (!fona.begin(*fonaSerial)) {
@@ -115,6 +116,7 @@ void GSM_init() {
     turnGPRS();
 }
 
+// post data to website
 int postData() {
     // Post data to website via 3G
     // Construct URL and post the data to the web API
@@ -130,6 +132,7 @@ int postData() {
     return fona.postData3G(URL);
 }
 
+// check if there's signal
 int check_network() {
     // read the network/cellular status
     uint8_t n = fona.getNetworkStatus();
@@ -140,6 +143,7 @@ int check_network() {
     return 0;
 }
 
+// send count request to pi through I2C
 void Send_Count() {
     // send count request to raspberry pi
     sprintf(msg, "count\n");
@@ -150,6 +154,7 @@ void Send_Count() {
     // printLong("Send request to pi!");
 }
 
+// read timestamp from rtc
 void read_time() {
     // request timeStamp from rtc
     now = rtc.now();
@@ -165,6 +170,7 @@ void read_time() {
     // printLong("Read count number!");
 }
 
+// read count from pi through I2C
 void Read_Count() {
     Wire.requestFrom(RPi_slave, 2);
     int idx = 0;
@@ -176,16 +182,17 @@ void Read_Count() {
     count[idx] = '\0';
 }
 
+// main function to be called by timer 
 bool function_to_call(void*) {
     // check time
     now = rtc.now();
-    if (now.hour() == 17 && RPi_on) {  // tell the RPi to shutdown
+    if (now.hour() == 18 && RPi_on) {  // tell the RPi to shutdown
         sprintf(msg, "down\n");
         Wire.beginTransmission(RPi_slave);
         Wire.write(msg);
         Wire.endTransmission();
         RPi_on = false;
-    } else if (now.hour() == 17 && !RPi_on) {  // wake up the RPi by shorting
+    } else if (now.hour() == 18 && !RPi_on) {  // wake up the RPi by shorting
         digitalWrite(WAKE_UP, LOW);            // short the GPIO3 for 0.5s
         delay(500);
         digitalWrite(WAKE_UP, HIGH);
