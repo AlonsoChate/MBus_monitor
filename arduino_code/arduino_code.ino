@@ -1,7 +1,7 @@
 #include <LiquidCrystal.h>
 #include <Wire.h>
-#include "Adafruit_FONA.h"
 #include <arduino-timer.h>
+#include "Adafruit_FONA.h"
 #include "RTClib.h"
 
 /*-----------------------------------------------------------*/
@@ -9,11 +9,15 @@ auto timer = timer_create_default();  // create timer with milliseconds
 
 /*-----------------------------------------------------------*/
 /* Global variables used for RPi slave */
+#define WAKE_UP 6
+char msg[15];
 int RPi_slave = 9;       // RPi I2C slave address
 char count[15] = "N/A";  // People count reg
+bool RPi_on = true;
 
 /*-----------------------------------------------------------*/
 /* Global variables used for RTC */
+DateTime now;
 RTC_PCF8523 rtc;               // RTC object
 char timeStamp[17] = "N/A";    // Format: 2021/11/22/14/04
 char timeDisplay[17] = "N/A";  // Format: 2021/11/22 14:04
@@ -26,7 +30,7 @@ LiquidCrystal lcd(rs, en, d4, d5, d6, d7);  // LCD object
 /*-----------------------------------------------------------*/
 /* GSM setting */
 #define FONA_RST 15
-int GPRS_enabled = 0;
+bool GPRS_enabled = false;
 
 HardwareSerial* fonaSerial = &Serial;
 Adafruit_FONA_3G fona = Adafruit_FONA_3G(FONA_RST);
@@ -138,18 +142,17 @@ int check_network() {
 
 void Send_Count() {
     // send count request to raspberry pi
-    char msg[15];
     sprintf(msg, "count\n");
     Wire.beginTransmission(RPi_slave);
     Wire.write(msg);
     Wire.endTransmission();
 
-    //printLong("Send request to pi!");
+    // printLong("Send request to pi!");
 }
 
-void read_time(){
+void read_time() {
     // request timeStamp from rtc
-    DateTime now = rtc.now();
+    now = rtc.now();
     uint16_t year = now.year();
     uint8_t month = now.month();
     uint8_t day = now.day();
@@ -159,7 +162,7 @@ void read_time(){
     sprintf(timeStamp, "%d/%d/%d/%d/%d\0", year, month, day, hour, minute);
     sprintf(timeDisplay, "%d/%d/%d %d:%d\0", year, month, day, hour, minute);
 
-    //printLong("Read count number!");
+    // printLong("Read count number!");
 }
 
 void Read_Count() {
@@ -173,27 +176,42 @@ void Read_Count() {
     count[idx] = '\0';
 }
 
-bool function_to_call(void*){
-    Send_Count();
+bool function_to_call(void*) {
+    // check time
+    now = rtc.now();
+    if (now.hour() == 17 && RPi_on) {  // tell the RPi to shutdown
+        sprintf(msg, "down\n");
+        Wire.beginTransmission(RPi_slave);
+        Wire.write(msg);
+        Wire.endTransmission();
+        RPi_on = false;
+    } else if (now.hour() == 17 && !RPi_on) {  // wake up the RPi by shorting
+        digitalWrite(WAKE_UP, LOW);            // short the GPIO3 for 0.5s
+        delay(500);
+        digitalWrite(WAKE_UP, HIGH);
+        RPi_on = true;
+    } else if (RPi_on) {  // request number of people
+        Send_Count();
 
-    read_time();
+        read_time();
 
-    Read_Count();
+        Read_Count();
 
-    // display people count and timestamp
-    lcd.clear();
-    lcd.print("#People " + String(count));
-    lcd.setCursor(0, 1);
-    lcd.print(String(timeDisplay));
-    delay(4000);
+        // display people count and timestamp
+        lcd.clear();
+        lcd.print("#People " + String(count));
+        lcd.setCursor(0, 1);
+        lcd.print(String(timeDisplay));
+        delay(4000);
 
-    if (!GPRS_enabled)
-        turnGPRS();
+        if (!GPRS_enabled)
+            turnGPRS();
 
-    if (check_network() && postData()) {
-        printLong("Transmitted successfully!");
-    } else {
-        printLong("Failed to transmit!");
+        if (check_network() && postData()) {
+            printLong("Transmitted successfully!");
+        } else {
+            printLong("Failed to transmit!");
+        }
     }
 
     return true;
@@ -204,6 +222,10 @@ void setup() {
     lcd.begin(16, 2);
     printLong("Initializing....");
 
+    /* GPIO Init*/
+    pinMode(WAKE_UP, OUTPUT);
+    digitalWrite(WAKE_UP, HIGH);
+
     /* RPi Slave Init*/
     Wire.begin();
     Wire.requestFrom(RPi_slave,
@@ -211,7 +233,7 @@ void setup() {
     while (Wire.available()) {
         char c = Wire.read();
     }
-    //printLong("Raspberry Pi initialized!");
+    // printLong("Raspberry Pi initialized!");
 
     /* RTC Init*/
     rtc.begin();
@@ -220,10 +242,10 @@ void setup() {
         rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
     }
     rtc.start();
-    //printLong("RTC initialized!");
+    // printLong("RTC initialized!");
 
     /* GSM Init*/
-    //printLong("Initializing FONA...");
+    // printLong("Initializing FONA...");
 
     GSM_init();
 
@@ -235,5 +257,5 @@ void setup() {
 
 void loop() {
     timer.tick();  // tick the timer
-    //function_to_call();
+    // function_to_call();
 }
