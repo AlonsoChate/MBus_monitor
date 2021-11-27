@@ -1,9 +1,11 @@
 #include <LiquidCrystal.h>
 #include <Wire.h>
 #include "Adafruit_FONA.h"
+#include <arduino-timer.h>
 #include "RTClib.h"
 
 /*-----------------------------------------------------------*/
+auto timer = timer_create_default();  // create timer with milliseconds
 
 /*-----------------------------------------------------------*/
 /* Global variables used for RPi slave */
@@ -46,21 +48,23 @@ void printLong(String data) {
     }
 }
 
-uint16_t readBatteryPercent() {
-    uint16_t vbat;
+// uint16_t readBatteryPercent() {
+//     uint16_t vbat;
 
-    if (!fona.getBattPercent(&vbat)) {
-        printLong("Failed to read Batt");
-        return 0;
-    } else {
-        return vbat;
-    }
-}
+//     if (!fona.getBattPercent(&vbat)) {
+//         printLong("Failed to read Batt");
+//         return 0;
+//     } else {
+//         return vbat;
+//     }
+// }
 
+// turn on GPRS first before tranmitting data
+// GPRS should only be turned on once
 int turnGPRS() {
     if (!check_network()) {
         GPRS_enabled = 0;
-        printLong("Failed to enable GPRS, please retry!");
+        printLong("Failed to enable GPRS");
         return 0;
     }
     // try to turn off first
@@ -70,7 +74,7 @@ int turnGPRS() {
         printLong("GPRS Enabled!");
     } else {
         GPRS_enabled = 0;
-        printLong("Failed to enable GPRS, please retry!");
+        printLong("Failed to enable GPRS");
     }
     return 1;
 }
@@ -82,19 +86,19 @@ void GSM_init() {
         fonaSerial->begin(4800);
     }
 
-    uint8_t type = fona.type();
-    lcd.clear();
-    lcd.print("FONA is OK");
-    lcd.setCursor(0, 1);
-    switch (type) {
-        case FONA3G_A:
-            lcd.print("FONA 3G American");
-            break;
-        default:
-            lcd.print("???");
-            break;
-    }
-    delay(1000);
+    // uint8_t type = fona.type();
+    // lcd.clear();
+    // lcd.print("FONA is OK");
+    // lcd.setCursor(0, 1);
+    // switch (type) {
+    //     case FONA3G_A:
+    //         lcd.print("FONA 3G American");
+    //         break;
+    //     default:
+    //         lcd.print("???");
+    //         break;
+    // }
+    // delay(1000);
 
     fona.setGPRSNetworkSettings(F("wireless.dish.com"));
 
@@ -140,7 +144,7 @@ void Send_Count() {
     Wire.write(msg);
     Wire.endTransmission();
 
-    printLong("Send request to pi!");
+    //printLong("Send request to pi!");
 }
 
 void read_time(){
@@ -155,7 +159,7 @@ void read_time(){
     sprintf(timeStamp, "%d/%d/%d/%d/%d\0", year, month, day, hour, minute);
     sprintf(timeDisplay, "%d/%d/%d %d:%d\0", year, month, day, hour, minute);
 
-    printLong("Read count number!");
+    //printLong("Read count number!");
 }
 
 void Read_Count() {
@@ -169,7 +173,7 @@ void Read_Count() {
     count[idx] = '\0';
 }
 
-void function_to_call(){
+bool function_to_call(void*){
     Send_Count();
 
     read_time();
@@ -191,14 +195,14 @@ void function_to_call(){
     } else {
         printLong("Failed to transmit!");
     }
+
+    return true;
 }
 
 void setup() {
     // set up the LCD's number of columns and rows:
     lcd.begin(16, 2);
-    lcd.clear();
-    lcd.print("Initializing....");
-    delay(500);
+    printLong("Initializing....");
 
     /* RPi Slave Init*/
     Wire.begin();
@@ -207,7 +211,7 @@ void setup() {
     while (Wire.available()) {
         char c = Wire.read();
     }
-    printLong("Raspberry Pi initialized!");
+    //printLong("Raspberry Pi initialized!");
 
     /* RTC Init*/
     rtc.begin();
@@ -216,17 +220,20 @@ void setup() {
         rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
     }
     rtc.start();
-    printLong("RTC initialized!");
+    //printLong("RTC initialized!");
 
     /* GSM Init*/
-    printLong("Initializing FONA...");
+    //printLong("Initializing FONA...");
 
     GSM_init();
 
     printLong("Finish initialization!");
+
+    // call the function every millisc
+    timer.every(20000, function_to_call);
 }
 
 void loop() {
-    function_to_call();
-
+    timer.tick();  // tick the timer
+    //function_to_call();
 }
