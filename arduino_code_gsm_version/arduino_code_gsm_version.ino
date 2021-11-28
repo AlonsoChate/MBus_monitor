@@ -9,7 +9,9 @@ auto timer = timer_create_default();  // create timer with milliseconds
 
 /*-----------------------------------------------------------*/
 /* Global variables used for RPi slave */
-#define WAKE_UP 6
+#define WAKE_UP 8  // time to wake up pi
+#define SLEEP 18   // time to halt
+#define AWAKE_PIN 6
 char msg[15];
 int RPi_slave = 9;       // RPi I2C slave address
 char count[15] = "N/A";  // People count reg
@@ -24,7 +26,7 @@ char timeDisplay[17] = "N/A";  // Format: 2021/11/22 14:04
 
 /*-----------------------------------------------------------*/
 /* Global variables used for LCD */
-const int rs = 9, en = 8, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
+const uint8_t rs = 9, en = 8, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);  // LCD object
 
 /*-----------------------------------------------------------*/
@@ -119,14 +121,12 @@ void GSM_init() {
 // post data to website
 int postData() {
     // Post data to website via 3G
-    // Construct URL and post the data to the web API
-    // Create char buffers for the floating point numbers for sprintf
     char URL[150] = "";  // Make sure this buffer is long enough for your
                          // request URL
 
-    // Use IMEI as device ID in this example:
+    // https://www.dweet.io/dweet/for/gsm_mod
     sprintf(URL,
-            "GET /dweet/for/gsm_mod?people_count=%s&timeStamp=%s "
+            "GET /dweet/for/gsm_mod?peopleCount=%s&timeStamp=%s "
             "HTTP/1.1\r\nHost: dweet.io\r\nContent-Length: 10\r\n\r\n",
             count, timeStamp);
     return fona.postData3G(URL);
@@ -145,7 +145,6 @@ int check_network() {
 
 // send count request to pi through I2C
 void Send_Count() {
-    // send count request to raspberry pi
     sprintf(msg, "count\n");
     Wire.beginTransmission(RPi_slave);
     Wire.write(msg);
@@ -177,31 +176,29 @@ void Read_Count() {
     while (Wire.available()) {
         char c = Wire.read();
         count[idx++] = c;
-        Serial.print(c);
     }
     count[idx] = '\0';
 }
 
-// main function to be called by timer 
+// main function to be called by timer
 bool function_to_call(void*) {
     // check time
     now = rtc.now();
-    if (now.hour() == 18 && RPi_on) {  // tell the RPi to shutdown
+    if (now.hour() == SLEEP && RPi_on) {  // tell the RPi to shutdown
         sprintf(msg, "down\n");
         Wire.beginTransmission(RPi_slave);
         Wire.write(msg);
         Wire.endTransmission();
         RPi_on = false;
-    } else if (now.hour() == 18 && !RPi_on) {  // wake up the RPi by shorting
-        digitalWrite(WAKE_UP, LOW);            // short the GPIO3 for 0.5s
+    } else if (now.hour() == WAKE_UP &&
+               !RPi_on) {              // wake up the RPi by shorting
+        digitalWrite(AWAKE_PIN, LOW);  // short the GPIO3 for 0.5s
         delay(500);
-        digitalWrite(WAKE_UP, HIGH);
+        digitalWrite(AWAKE_PIN, HIGH);
         RPi_on = true;
     } else if (RPi_on) {  // request number of people
         Send_Count();
-
         read_time();
-
         Read_Count();
 
         // display people count and timestamp
@@ -220,7 +217,6 @@ bool function_to_call(void*) {
             printLong("Failed to transmit!");
         }
     }
-
     return true;
 }
 
@@ -229,11 +225,11 @@ void setup() {
     lcd.begin(16, 2);
     printLong("Initializing....");
 
-    /* GPIO Init*/
-    pinMode(WAKE_UP, OUTPUT);
-    digitalWrite(WAKE_UP, HIGH);
+    // GPIO setting for wake up
+    pinMode(AWAKE_PIN, OUTPUT);
+    digitalWrite(AWAKE_PIN, HIGH);
 
-    /* RPi Slave Init*/
+    // RPi Slave Init
     Wire.begin();
     Wire.requestFrom(RPi_slave,
                      2);  // Dump unreaded data on I2C line, necessary!
@@ -253,7 +249,6 @@ void setup() {
 
     /* GSM Init*/
     // printLong("Initializing FONA...");
-
     GSM_init();
 
     printLong("Finish initialization!");
@@ -264,5 +259,4 @@ void setup() {
 
 void loop() {
     timer.tick();  // tick the timer
-    // function_to_call();
 }
