@@ -192,9 +192,9 @@ bool function_to_call(void*) {
         RPi_on = false;
     } else if (now.hour() == WAKE_UP &&
                !RPi_on) {              // wake up the RPi by shorting
-        digitalWrite(AWAKE_PIN, LOW);  // short the GPIO3 for 0.5s
+        digitalWrite(AWAKE_PIN, HIGH);  // short the GPIO3 for 0.5s
         delay(500);
-        digitalWrite(AWAKE_PIN, HIGH);
+        digitalWrite(AWAKE_PIN, LOW);
         RPi_on = true;
     } else if (RPi_on) {  // request number of people
         Send_Count();
@@ -227,7 +227,7 @@ void setup() {
 
     // GPIO setting for wake up
     pinMode(AWAKE_PIN, OUTPUT);
-    digitalWrite(AWAKE_PIN, HIGH);
+    digitalWrite(AWAKE_PIN, LOW);
 
     // RPi Slave Init
     Wire.begin();
@@ -257,6 +257,7 @@ void setup() {
     timer.every(20000, function_to_call);
 }
 
-void loop() {
+void loop() 
+{
     timer.tick();  // tick the timer
 }
