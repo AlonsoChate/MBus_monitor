@@ -13,9 +13,9 @@ auto timer = timer_create_default();
 #define WAKE_UP 8  // time to wake up pi
 #define SLEEP 18   // time to halt
 #define AWAKE_PIN 6
-char msg[15];
+char msg[17];
 int RPi_slave = 9;       // RPi I2C slave address
-char count[15] = "N/A";  // People count reg
+char count[17] = "N/A";  // People count reg
 bool RPi_on = true;
 
 /*-----------------------------------------------------------*/
@@ -91,10 +91,7 @@ bool function_to_call(void*) {
     
     if (now.hour() == SLEEP && RPi_on) 
     {  // tell the RPi to shutdown
-        sprintf(msg, "down\n");
-        Wire.beginTransmission(RPi_slave);
-        Wire.write(msg);
-        Wire.endTransmission();
+        Send_Command("down\n");
         RPi_on = false;
     } 
     else if (now.hour() == WAKE_UP && !RPi_on) 
