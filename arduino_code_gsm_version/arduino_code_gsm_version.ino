@@ -12,8 +12,7 @@ auto timer = timer_create_default();  // create timer with milliseconds
 #define WAKE_UP 8  // time to wake up pi
 #define SLEEP 18   // time to halt
 #define AWAKE_PIN 6
-char msg[15];
-int RPi_slave = 9;       // RPi I2C slave address
+#define RPi_slave 9      // RPi I2C slave address
 char count[15] = "N/A";  // People count reg
 bool RPi_on = true;
 
@@ -143,11 +142,10 @@ int check_network() {
     return 0;
 }
 
-// send count request to pi through I2C
-void Send_Count() {
-    sprintf(msg, "count\n");
+// send message to pi through I2C
+void Send_Command(char* str) {
     Wire.beginTransmission(RPi_slave);
-    Wire.write(msg);
+    Wire.write(str);
     Wire.endTransmission();
 
     // printLong("Send request to pi!");
@@ -185,20 +183,18 @@ bool function_to_call(void*) {
     // check time
     now = rtc.now();
     if (now.hour() == SLEEP && RPi_on) {  // tell the RPi to shutdown
-        sprintf(msg, "down\n");
-        Wire.beginTransmission(RPi_slave);
-        Wire.write(msg);
-        Wire.endTransmission();
+        Send_Command("down\n");
         RPi_on = false;
     } else if (now.hour() == WAKE_UP &&
-               !RPi_on) {              // wake up the RPi by shorting
+               !RPi_on) {               // wake up the RPi by shorting
         digitalWrite(AWAKE_PIN, HIGH);  // short the GPIO3 for 0.5s
         delay(500);
         digitalWrite(AWAKE_PIN, LOW);
         RPi_on = true;
     } else if (RPi_on) {  // request number of people
-        Send_Count();
+        Send_Command("count\n");
         read_time();
+        delay(4000);
         Read_Count();
 
         // display people count and timestamp
@@ -206,15 +202,17 @@ bool function_to_call(void*) {
         lcd.print("#People " + String(count));
         lcd.setCursor(0, 1);
         lcd.print(String(timeDisplay));
-        delay(4000);
 
         if (!GPRS_enabled)
             turnGPRS();
 
         if (check_network() && postData()) {
             printLong("Transmitted successfully!");
+            Send_Command("ack\n");
         } else {
             printLong("Failed to transmit!");
+            Send_Command("nack\n");
+            Send_Command(timeStamp);
         }
     }
     return true;
@@ -257,7 +255,6 @@ void setup() {
     timer.every(20000, function_to_call);
 }
 
-void loop() 
-{
+void loop() {
     timer.tick();  // tick the timer
 }
