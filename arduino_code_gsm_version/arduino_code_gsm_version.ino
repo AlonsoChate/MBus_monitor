@@ -9,6 +9,7 @@ auto timer = timer_create_default();  // create timer with milliseconds
 
 /*-----------------------------------------------------------*/
 /* Global variables used for RPi slave */
+#define DEV_ID 2
 #define WAKE_UP 8  // time to wake up pi
 #define SLEEP 18   // time to halt
 #define AWAKE_PIN 6
@@ -125,9 +126,9 @@ int postData() {
 
     // https://www.dweet.io/dweet/for/gsm_mod
     sprintf(URL,
-            "GET /dweet/for/gsm_mod?peopleCount=%s&timeStamp=%s "
+            "GET /dweet/for/gsm_mod?count=%s&time=%s&id=%d "
             "HTTP/1.1\r\nHost: dweet.io\r\nContent-Length: 10\r\n\r\n",
-            count, timeStamp);
+            count, timeStamp, DEV_ID);
     return fona.postData3G(URL);
 }
 
