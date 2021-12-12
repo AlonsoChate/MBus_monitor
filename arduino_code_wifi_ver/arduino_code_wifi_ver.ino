@@ -11,7 +11,7 @@ auto timer = timer_create_default();
 /*-----------------------------------------------------------*/
 /* Global variables used for RPi slave */
 #define WAKE_UP 8  // time to wake up pi
-#define SLEEP 18   // time to halt
+#define SLEEP 24   // time to halt
 #define AWAKE_PIN 6
 char msg[17];
 int RPi_slave = 9;       // RPi I2C slave address
@@ -105,7 +105,7 @@ bool function_to_call(void*) {
     {  // request number of people
         Send_Command("count\n");
         Read_Time();
-        delay(4000);
+        delay(5000);
         Read_Count();
         
         // display people count and timestamp
@@ -140,16 +140,17 @@ void setup() {
 
     /* RTC Init*/
     rtc.begin();
+    //rtc.adjust(DateTime(2021, 12, 8, 23, 33, 0));
     if (!rtc.initialized() || rtc.lostPower()) {
         // Serial.println("RTC is NOT initialized, let's set the time!");
-        rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+        // rtc.adjust(DateTime(2021, 12, 8, 5, 8, 0));
     }
     rtc.start();
     
     printLong("Finish!");
 
     // call the function every 40 millisc
-    timer.every(40000, function_to_call);
+    timer.every(20000, function_to_call);
 }
 
 void loop() {
